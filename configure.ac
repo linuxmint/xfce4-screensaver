@@ -1,9 +1,10 @@
 dnl -*- mode: m4 -*-
 
+AC_COPYRIGHT([Copyright (c) 2011-2023 The Xfce development team. All rights reserved.])
 AC_PREREQ(2.60)
 AC_INIT([xfce4-screensaver],
-        [4.16.0],
-        [https://www.xfce.org/])
+        [4.18.1],
+        [https://gitlab.xfce.org/apps/xfce4-screensaver])
 
 AC_CONFIG_SRCDIR(src/xfce4-screensaver.c)
 AC_CONFIG_MACRO_DIRS([m4])
@@ -22,10 +23,7 @@ AC_SUBST(AR_FLAGS, [cr])
 IT_PROG_INTLTOOL([0.50.1])
 AC_PROG_CC
 AM_PROG_CC_C_O
-AC_STDC_HEADERS
 AC_CANONICAL_HOST
-
-AC_HEADER_STDC
 
 LT_PREREQ([2.4])
 LT_INIT([disable-static])
@@ -39,8 +37,6 @@ GETTEXT_PACKAGE=xfce4-screensaver
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of default gettext domain])
 
-AM_GLIB_GNU_GETTEXT
-
 dnl
 dnl Enable gsettings schema macros
 dnl
@@ -49,9 +45,10 @@ GLIB_GSETTINGS
 
 # Dependencies
 
-DBUS_REQUIRED_VERSION=0.30
-GLIB_REQUIRED_VERSION=2.50.0
+m4_define([glib_required_version], [2.50.0])
+GLIB_REQUIRED_VERSION=glib_required_version
 GTK_REQUIRED_VERSION=3.22.0
+DBUS_REQUIRED_VERSION=0.30
 X11_REQUIRED_VERSION=1.0
 LIBXKLAVIER_REQUIRED=5.2
 XRANDR_REQUIRED=1.3
@@ -85,6 +82,10 @@ fi
 
 AC_SUBST(RANDR_PACKAGE)
 
+dnl This is to set GLib macros via XDT_CHECK_PACKAGE when building with
+dnl xfce4-dev-tools >= 4.17.1
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_required_version])
+
 AC_CHECK_FUNCS([setresuid setenv unsetenv clearenv])
 PKG_CHECK_MODULES(XFCE_SCREENSAVER,
         x11 >= $X11_REQUIRED_VERSION
@@ -103,7 +104,8 @@ AC_SUBST(XFCE_SCREENSAVER_LIBS)
 PKG_CHECK_MODULES(XFCE_SCREENSAVER_DIALOG,
         gio-2.0 >= $GLIB_REQUIRED_VERSION
         gthread-2.0
-        gtk+-3.0 >= $GTK_REQUIRED_VERSION)
+        gtk+-3.0 >= $GTK_REQUIRED_VERSION
+        libxfce4util-1.0 >= $LIBXFCE4UTIL_REQUIRED)
 AC_SUBST(XFCE_SCREENSAVER_DIALOG_CFLAGS)
 AC_SUBST(XFCE_SCREENSAVER_DIALOG_LIBS)
 
@@ -119,7 +121,8 @@ AC_SUBST(XFCE_SCREENSAVER_CAPPLET_LIBS)
 
 PKG_CHECK_MODULES(XFCE_SCREENSAVER_COMMAND,
         gobject-2.0 >= $GLIB_REQUIRED_VERSION
-        gio-2.0 >= $GLIB_REQUIRED_VERSION)
+        gio-2.0 >= $GLIB_REQUIRED_VERSION
+        libxfce4util-1.0 >= $LIBXFCE4UTIL_REQUIRED)
 AC_SUBST(XFCE_SCREENSAVER_COMMAND_CFLAGS)
 AC_SUBST(XFCE_SCREENSAVER_COMMAND_LIBS)
 
@@ -191,7 +194,7 @@ dnl ---------------------------------------------------------------------------
 dnl - Where should we put documentation ?
 dnl ---------------------------------------------------------------------------
 AC_ARG_WITH(doc-dir,
-              [AC_HELP_STRING([--with-doc-dir=<dir>],
+              [AS_HELP_STRING([--with-doc-dir=<dir>],
               [directory to install documentation])])
 if ! test -z "$with_doc_dir"; then
    DOCDIR="$with_doc_dir/xfce4-screensaver-$VERSION"
@@ -241,7 +244,7 @@ AC_DEFUN([AC_CHECK_X_HEADER], [
   AC_CHECK_HEADER([$1],[$2],[$3],[$4])
   CPPFLAGS="$ac_save_CPPFLAGS"])
 
-# Like AC_TRY_COMPILE, but it uses the already-computed -I directories.
+# Like AC_COMPILE_IFELSE, but it uses the already-computed -I directories.
 #
 AC_DEFUN([AC_TRY_X_COMPILE], [
   ac_save_CPPFLAGS="$CPPFLAGS"
@@ -249,7 +252,7 @@ AC_DEFUN([AC_TRY_X_COMPILE], [
     CPPFLAGS="$CPPFLAGS -I$includedir"
   fi
   CPPFLAGS="$CPPFLAGS $X_CFLAGS"
-  AC_TRY_COMPILE([$1], [$2], [$3], [$4])
+  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[$1]], [[$2]])], [$3], [$4])
   CPPFLAGS="$ac_save_CPPFLAGS"])
 
 
@@ -426,7 +429,7 @@ fi
 
 # Check whether to use a xscreensaver hacks configuration directory
 AC_MSG_CHECKING([whether to use xscreensaver hacks configuration])
-AC_ARG_WITH(xscreensaverdir, AC_HELP_STRING([--with-xscreensaverdir=dir], [Use xscreensaver hack configs found in directory],))
+AC_ARG_WITH(xscreensaverdir, AS_HELP_STRING([--with-xscreensaverdir=dir], [Use xscreensaver hack configs found in directory],))
 xscreensaverdir=
 if test "x$with_xscreensaverdir" = "xyes"; then
   if test -d /usr/share/xscreensaver/config; then
@@ -448,7 +451,7 @@ else
 fi
 
 # Path to xscreensaver hack executables
-AC_ARG_WITH(xscreensaverhackdir, AC_HELP_STRING([--with-xscreensaverhackdir=dir], [Look for xscreensaver hack executables in directory],))
+AC_ARG_WITH(xscreensaverhackdir, AS_HELP_STRING([--with-xscreensaverhackdir=dir], [Look for xscreensaver hack executables in directory],))
 AC_MSG_CHECKING([for location of xscreensaver hack executables])
 xscreensaverhackdir=
 if test "x$with_xscreensaverhackdir" = "xyes" -o "x$with_xscreensaverhackdir" = "x"; then
@@ -491,7 +494,7 @@ if test x$with_libgl != xno; then
   fi
 
   if test "$have_gl" = yes ; then
-    AC_CHECK_X_LIB(GL, glXChooseVisual, have_libgl=yes, have_libgl=no, -lm)
+    AC_CHECK_X_LIB(GL, glXChooseVisual, have_libgl=yes, have_libgl=no)
   fi
 fi
 
@@ -543,7 +546,7 @@ dnl - Check for PAM
 dnl ---------------------------------------------------------------------------
 
 have_pam=no
-AC_ARG_ENABLE(pam, AC_HELP_STRING([--enable-pam],
+AC_ARG_ENABLE(pam, AS_HELP_STRING([--enable-pam],
                    [Enable PAM support @<:@default=auto@:>@],
                    ),,enable_pam=auto)
 
@@ -564,20 +567,33 @@ if test "x$have_pam" = "xyes"; then
 
     AC_MSG_CHECKING(how to call pam_strerror)
     AC_CACHE_VAL(ac_cv_pam_strerror_args,
-     [AC_TRY_COMPILE([#include <stdio.h>
-                      #include <stdlib.h>
-                      #include <security/pam_appl.h>],
-                     [pam_handle_t *pamh = 0;
-                      const char *s = pam_strerror(pamh, PAM_SUCCESS);],
-                     [ac_pam_strerror_args=2],
-                     [AC_TRY_COMPILE([#include <stdio.h>
-                                      #include <stdlib.h>
-                                      #include <security/pam_appl.h>],
-                                     [char *s =
-                                       pam_strerror(PAM_SUCCESS);],
-                                     [ac_pam_strerror_args=1],
-                                     [ac_pam_strerror_args=0])])
-      ac_cv_pam_strerror_args=$ac_pam_strerror_args])
+      [AC_COMPILE_IFELSE(
+        [AC_LANG_PROGRAM(
+          [[#include <stdio.h>
+            #include <stdlib.h>
+            #include <security/pam_appl.h>
+          ]],
+          [[pam_handle_t *pamh = 0;
+            const char *s = pam_strerror(pamh, PAM_SUCCESS);
+          ]]
+        )],
+        [ac_pam_strerror_args=2],
+        [AC_COMPILE_IFELSE(
+          [AC_LANG_PROGRAM(
+            [[#include <stdio.h>
+              #include <stdlib.h>
+              #include <security/pam_appl.h>
+            ]],
+            [[char *s =
+              pam_strerror(PAM_SUCCESS);
+            ]]
+          )],
+          [ac_pam_strerror_args=1],
+          [ac_pam_strerror_args=0]
+        )]
+      )
+      ac_cv_pam_strerror_args=$ac_pam_strerror_args]
+    )
     ac_pam_strerror_args=$ac_cv_pam_strerror_args
     if test "$ac_pam_strerror_args" = 1 ; then
       AC_MSG_RESULT(one argument)
@@ -759,6 +775,9 @@ if test "$enable_locking" = yes ; then
     AC_CHECK_LIB(crypt, crypt,
                  [have_crypt=yes; AUTH_LIBS="${AUTH_LIBS} -lcrypt"])
   fi
+  if test "$have_crypt" = yes; then
+    AC_DEFINE(HAVE_LIBCRYPT, 1, [Define if crypt() function is available])
+  fi
 fi
 
 # Most of the above shadow mechanisms will have set need_setuid to yes,
@@ -796,7 +815,8 @@ have_passwd_helper=no
 with_passwd_helper_req=unspecified
 
 AC_ARG_WITH(passwd-helper,
-[  --with-passwd-helper    Include support for an external password
+[  --with-passwd-helper=<full-pathname>
+                          Specify full pathname of an external password
                           verification helper program.],
   [with_passwd_helper="$withval"; with_passwd_helper_req="$withval"],[with_passwd_helper=no])
 # no HANDLE_X_PATH_ARG for this one
@@ -1015,64 +1035,13 @@ AC_SUBST(EXPANDED_DATADIR)
 prefix=$old_prefix
 exec_prefix=$old_exec_prefix
 
-# Turn on the additional warnings last, so -Werror doesn't affect other tests.
-
-AC_ARG_ENABLE(more-warnings,
-  AC_HELP_STRING([--enable-more-warnings], [Maximum compiler warnings]),
-set_more_warnings="$enableval",[
-if test -d $srcdir/.git; then
-        is_cvs_version=true
-        set_more_warnings=yes
-else
-        set_more_warnings=no
-fi
-])
-AC_MSG_CHECKING(for more warnings)
-if test "$GCC" = "yes" -a "$set_more_warnings" != "no"; then
-        AC_MSG_RESULT(yes)
-        CFLAGS="\
-        -Wall \
-        -Wchar-subscripts -Wmissing-declarations -Wmissing-prototypes \
-        -Wnested-externs -Wpointer-arith \
-        -Wcast-align -Wsign-compare \
-        $CFLAGS"
-
-        for option in -Wno-strict-aliasing -Wno-sign-compare; do
-                SAVE_CFLAGS="$CFLAGS"
-                CFLAGS="$CFLAGS $option"
-                AC_MSG_CHECKING([whether gcc understands $option])
-                AC_TRY_COMPILE([], [],
-                        has_option=yes,
-                        has_option=no,)
-                if test $has_option = no; then
-                        CFLAGS="$SAVE_CFLAGS"
-                fi
-                AC_MSG_RESULT($has_option)
-                unset has_option
-                unset SAVE_CFLAGS
-        done
-        unset option
-else
-        AC_MSG_RESULT(no)
-fi
-
 #
 # Enable Debug
 #
-AC_ARG_ENABLE(debug, [AC_HELP_STRING([--enable-debug=[no/yes]], [turn on debugging])],, enable_debug=yes)
-if test "$enable_debug" = "yes"; then
-  DEBUG_CFLAGS="-DG_ENABLE_DEBUG"
-else
-  if test "x$enable_debug" = "xno"; then
-    DEBUG_CFLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
-  else
-    DEBUG_CFLAGS=""
-  fi
-fi
-AC_SUBST(DEBUG_CFLAGS)
+XDT_FEATURE_DEBUG()
 
 # Flags
-CFLAGS="$CFLAGS -lm"
+LDFLAGS="$LDFLAGS -lm"
 
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
@@ -1102,7 +1071,7 @@ AC_SUBST(themesdir)
 
 # Files
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 po/Makefile.in
 src/Makefile
@@ -1121,8 +1090,8 @@ data/images/Makefile
 savers/Makefile
 doc/Makefile
 doc/xfce4-screensaver.xml
-
 ])
+AC_OUTPUT
 
 echo "
                     xfce4-screensaver $VERSION

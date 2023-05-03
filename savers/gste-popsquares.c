@@ -33,8 +33,6 @@
 #include "gs-theme-engine.h"
 #include "gste-popsquares.h"
 
-static void     gste_popsquares_class_init (GSTEPopsquaresClass *klass);
-static void     gste_popsquares_init       (GSTEPopsquares      *engine);
 static void     gste_popsquares_finalize   (GObject             *object);
 static void     draw_frame                 (GSTEPopsquares      *pop,
                                             cairo_t             *cr);
@@ -280,8 +278,6 @@ gste_popsquares_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec) {
-    GSTE_POPSQUARES (object);
-
     switch (prop_id) {
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -294,8 +290,6 @@ gste_popsquares_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec) {
-    GSTE_POPSQUARES (object);
-
     switch (prop_id) {
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);

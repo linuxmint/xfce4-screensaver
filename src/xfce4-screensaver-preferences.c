@@ -241,13 +241,13 @@ config_get_theme (gboolean *is_writable) {
 }
 
 static gchar **
-get_all_theme_ids (GSThemeManager *theme_manager) {
+get_all_theme_ids (GSThemeManager *local_theme_manager) {
     gchar  **ids = NULL;
     GSList  *themes;
     GSList  *l;
     guint    idx = 0;
 
-    themes = gs_theme_manager_get_info_list (theme_manager);
+    themes = gs_theme_manager_get_info_list (local_theme_manager);
     ids = g_new0 (gchar *, g_slist_length (themes) + 1);
     for (l = themes; l; l = l->next) {
         GSThemeInfo *info = l->data;
@@ -569,7 +569,7 @@ config_get_theme_arguments (const gchar *theme) {
 }
 
 static void
-job_set_theme (GSJob      *job,
+job_set_theme (GSJob      *local_job,
                const char *theme) {
     GSThemeInfo *info;
     gchar       *command = NULL;
@@ -583,7 +583,7 @@ job_set_theme (GSJob      *job,
         command = g_strdup_printf ("%s %s", gs_theme_info_get_exec (info), arguments);
     }
 
-    gs_job_set_command (job, command);
+    gs_job_set_command (local_job, command);
 
     if (arguments)
         g_free (arguments);
@@ -1700,42 +1700,6 @@ setup_for_lid_switch (void) {
     }
 }
 
-/* copied from gs-window-x11.c */
-extern char **environ;
-
-static gchar **
-spawn_make_environment_for_display (GdkDisplay  *display,
-                                    gchar      **envp) {
-    gchar        **retval = NULL;
-    const gchar  *display_name;
-    gint          display_index = -1;
-    gint          i, env_len;
-
-    g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-
-    if (envp == NULL)
-        envp = environ;
-
-    for (env_len = 0; envp[env_len]; env_len++)
-        if (strncmp (envp[env_len], "DISPLAY", strlen ("DISPLAY")) == 0)
-            display_index = env_len;
-
-    retval = g_new (char *, env_len + 1);
-    retval[env_len] = NULL;
-
-    display_name = gdk_display_get_name (display);
-
-    for (i = 0; i < env_len; i++)
-        if (i == display_index)
-            retval[i] = g_strconcat ("DISPLAY=", display_name, NULL);
-        else
-            retval[i] = g_strdup (envp[i]);
-
-    g_assert (i == env_len);
-
-    return retval;
-}
-
 static gboolean
 spawn_command_line_on_display_sync (GdkDisplay  *display,
                                     const gchar  *command_line,
@@ -1970,7 +1934,7 @@ configure_capplet (void) {
     delay = config_get_idle_delay (&idle_delay_writable);
     ui_set_idle_delay (delay);
     set_widget_writable (widget, idle_delay_writable);
-    g_signal_connect (widget, "changed",
+    g_signal_connect (widget, "value-changed",
                       G_CALLBACK (idle_delay_value_changed_cb), NULL);
 
     /* Lock delay */
@@ -1978,7 +1942,7 @@ configure_capplet (void) {
     delay = config_get_lock_delay (&lock_delay_writable);
     ui_set_lock_delay (delay);
     set_widget_writable (widget, lock_delay_writable);
-    g_signal_connect (widget, "changed",
+    g_signal_connect (widget, "value-changed",
                       G_CALLBACK (lock_delay_value_changed_cb), NULL);
 
     /* Keyboard command */
@@ -2004,7 +1968,7 @@ configure_capplet (void) {
     delay = config_get_logout_delay (&logout_delay_writable);
     ui_set_logout_delay (delay);
     set_widget_writable (widget, logout_delay_writable);
-    g_signal_connect (widget, "changed",
+    g_signal_connect (widget, "value-changed",
                       G_CALLBACK (logout_delay_value_changed_cb), NULL);
 
     /* Idle activation enabled */
@@ -2139,7 +2103,10 @@ configure_capplet (void) {
 static void
 finalize_capplet (void) {
     if (screensaver_channel)
-        g_object_unref (screensaver_channel);
+      g_signal_handlers_disconnect_by_func (screensaver_channel, key_changed_cb, NULL);
+
+    if (xfpm_channel)
+      g_signal_handlers_disconnect_by_func (xfpm_channel, key_changed_cb, NULL);
 
     if (active_theme)
         g_free (active_theme);
@@ -2150,13 +2117,7 @@ main (int    argc,
       char **argv) {
     GError    *error = NULL;
 
-#ifdef ENABLE_NLS
-    bindtextdomain (GETTEXT_PACKAGE, XFCELOCALEDIR);
-# ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-# endif
-    textdomain (GETTEXT_PACKAGE);
-#endif
+    xfce_textdomain (GETTEXT_PACKAGE, XFCELOCALEDIR, "UTF-8");
 
     if (!gtk_init_with_args (&argc, &argv, "", entries, NULL, &error)) {
         if (G_LIKELY (error)) {
@@ -2237,6 +2198,8 @@ main (int    argc,
 
     if (job)
         g_object_unref (job);
+
+    xfconf_shutdown ();
 
     return 0;
 }

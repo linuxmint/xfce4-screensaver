@@ -42,8 +42,6 @@
 #include "gs-debug.h"
 #include "gs-prefs.h"
 
-static void         gs_listener_x11_class_init      (GSListenerX11Class *klass);
-static void         gs_listener_x11_init            (GSListenerX11      *listener);
 static void         gs_listener_x11_finalize        (GObject            *object);
 
 static void         reset_timer                     (GSListenerX11      *listener,
@@ -51,8 +49,8 @@ static void         reset_timer                     (GSListenerX11      *listene
 
 struct GSListenerX11Private {
     int scrnsaver_event_base;
-    gint     timeout;
-    gint     lock_timeout;
+    guint    timeout;
+    guint    lock_timeout;
     guint    timer_id;
     GSPrefs *prefs;
 };
@@ -120,7 +118,7 @@ get_x11_idle_info (guint *idle_time,
 }
 
 static gboolean
-check_fullscreen_window () {
+check_fullscreen_window (void) {
     WnckScreen *screen;
     WnckWindow *window;
 
@@ -310,8 +308,8 @@ gs_listener_x11_acquire (GSListenerX11 *listener) {
 static void
 gs_listener_x11_set_timeouts (GSListenerX11 *listener) {
     Display *display = gdk_x11_display_get_xdisplay(gdk_display_get_default());
-    gint     timeout = listener->priv->prefs->timeout * 60;
-    gint     lock_timeout = listener->priv->prefs->lock_timeout * 60;
+    guint    timeout = listener->priv->prefs->timeout * 60;
+    guint    lock_timeout = listener->priv->prefs->lock_timeout * 60;
     gboolean trigger_reset_timer = FALSE;
 
     /* set X server timeouts and disable screen blanking */

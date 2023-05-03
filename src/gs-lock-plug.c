@@ -59,8 +59,11 @@
 #define GDM_FLEXISERVER_COMMAND "gdmflexiserver"
 #define GDM_FLEXISERVER_ARGS    "--startnew Standard"
 
-#define FACE_ICON_SIZE 48
+#define FACE_ICON_SIZE 80
 #define DIALOG_TIMEOUT_SEC 60
+
+#define LOGGED_IN_EMBLEM_SIZE 20
+#define LOGGED_IN_EMBLEM_ICON "emblem-default"
 
 static void gs_lock_plug_finalize   (GObject         *object);
 
@@ -229,17 +232,21 @@ do_user_switch (GSLockPlug *plug) {
             gs_debug ("Unable to start GDM greeter: %s", error->message);
             g_error_free (error);
         }
-    } else if (g_getenv ("XDG_SEAT_PATH") != NULL) {
+    } else if (process_is_running ("lightdm")) {
         /* LightDM */
         GDBusProxyFlags flags = G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START;
         GDBusProxy *proxy = NULL;
+        const gchar *seat_path = g_getenv ("XDG_SEAT_PATH");
+        if (seat_path == NULL) {
+            seat_path = "/org/freedesktop/DisplayManager/Seat0";
+        }
 
         error = NULL;
         proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
                                               flags,
                                               NULL,
                                               "org.freedesktop.DisplayManager",
-                                              g_getenv ("XDG_SEAT_PATH"),
+                                              seat_path,
                                               "org.freedesktop.DisplayManager.Seat",
                                               NULL,
                                               &error);
@@ -373,6 +380,8 @@ response_cancel_idle (gpointer user_data) {
 static gboolean
 dialog_timed_out (gpointer user_data) {
     GSLockPlug *plug = user_data;
+
+    plug->priv->cancel_timeout_id = 0;
 
     gs_lock_plug_set_sensitive (plug, FALSE);
     set_status_text (plug, _("Time has expired."));
@@ -612,7 +621,7 @@ get_user_icon_from_accounts_service (void) {
                                            G_DBUS_CALL_FLAGS_NONE,
                                            -1, NULL, &error);
     if (variant == NULL) {
-        g_warning ("Could not find user: %s", error->message);
+        gs_debug ("Could not find user: %s", error->message);
         g_error_free (error);
         g_object_unref (bus);
         return NULL;
@@ -634,7 +643,7 @@ get_user_icon_from_accounts_service (void) {
                                            G_DBUS_CALL_FLAGS_NONE,
                                            -1, NULL, &error);
     if (variant == NULL) {
-        g_warning ("Could not find user icon: %s", error->message);
+        gs_debug ("Could not find user icon: %s", error->message);
         g_error_free (error);
         g_object_unref (bus);
         return NULL;
@@ -643,7 +652,7 @@ get_user_icon_from_accounts_service (void) {
     g_variant_get_child (variant, 0, "v", &res);
     pixbuf = gdk_pixbuf_new_from_file_at_scale (g_variant_get_string (res,
                                                                       NULL),
-                                                80, 80, FALSE,
+                                                FACE_ICON_SIZE, FACE_ICON_SIZE, FALSE,
                                                 &error);
     if (pixbuf == NULL) {
         g_warning ("Could not load user avatar: %s", error->message);
@@ -657,21 +666,101 @@ get_user_icon_from_accounts_service (void) {
     return pixbuf;
 }
 
+static GdkPixbuf *
+logged_in_pixbuf (GdkPixbuf *pixbuf)
+{
+    GdkPixbuf *composite = NULL, *emblem = NULL;
+    gint width, height;
+    GError *error = NULL;
+
+    emblem = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                       LOGGED_IN_EMBLEM_ICON,
+                                       LOGGED_IN_EMBLEM_SIZE,
+                                       GTK_ICON_LOOKUP_FORCE_SIZE,
+                                       &error);
+
+    if (!emblem) {
+        g_warning ("Failed to load the logged icon: %s", error->message);
+        g_clear_error (&error);
+        return NULL;
+    }
+
+    composite = gdk_pixbuf_copy (pixbuf);
+
+    width = gdk_pixbuf_get_width (composite);
+    height = gdk_pixbuf_get_height (composite);
+
+    gdk_pixbuf_composite (emblem, composite,
+                          width - LOGGED_IN_EMBLEM_SIZE,
+                          height - LOGGED_IN_EMBLEM_SIZE,
+                          LOGGED_IN_EMBLEM_SIZE,
+                          LOGGED_IN_EMBLEM_SIZE,
+                          width - LOGGED_IN_EMBLEM_SIZE,
+                          height - LOGGED_IN_EMBLEM_SIZE,
+                          1.0,
+                          1.0,
+                          GDK_INTERP_BILINEAR,
+                          255);
+
+    g_object_unref (emblem);
+
+    return composite;
+}
+
+static GdkPixbuf *
+round_image (GdkPixbuf *pixbuf)
+{
+    GdkPixbuf *dest = NULL;
+    cairo_surface_t *surface;
+    cairo_t *cr;
+    gint size;
+
+    size = gdk_pixbuf_get_width (pixbuf);
+    surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, size, size);
+    cr = cairo_create (surface);
+
+    /* Clip a circle */
+    cairo_arc (cr, size/2, size/2, size/2, 0, 2 * G_PI);
+    cairo_clip (cr);
+    cairo_new_path (cr);
+
+    gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+    cairo_paint (cr);
+
+    dest = gdk_pixbuf_get_from_surface (surface, 0, 0, size, size);
+    cairo_surface_destroy (surface);
+    cairo_destroy (cr);
+
+    return dest;
+}
+
 static gboolean
 set_face_image (GSLockPlug *plug) {
     char      *path;
     GError    *error = NULL;
-    GdkPixbuf *pixbuf;
+    GdkPixbuf *pixbuf, *temp_image;
 
     pixbuf = get_user_icon_from_accounts_service ();
     if (pixbuf == NULL) {
         path = g_build_filename (g_get_home_dir(), ".face", NULL);
-        pixbuf = gdk_pixbuf_new_from_file_at_scale (path, 80, 80, FALSE, &error);
+        pixbuf = gdk_pixbuf_new_from_file_at_scale (path, FACE_ICON_SIZE, FACE_ICON_SIZE, FALSE, &error);
         if (pixbuf == NULL) {
             g_warning ("Could not load the user avatar: %s", error->message);
             g_error_free (error);
             return FALSE;
         }
+    }
+
+    temp_image = round_image (pixbuf);
+    if (temp_image != NULL) {
+        g_object_unref (pixbuf);
+        pixbuf = temp_image;
+    }
+
+    temp_image = logged_in_pixbuf (pixbuf);
+    if (temp_image != NULL) {
+        g_object_unref (pixbuf);
+        pixbuf = temp_image;
     }
 
     gtk_image_set_from_pixbuf (GTK_IMAGE (plug->priv->auth_face_image), pixbuf);
@@ -892,7 +981,7 @@ gs_lock_plug_set_switch_enabled (GSLockPlug *plug,
         } else if (process_is_running ("gdm") || process_is_running("gdm3") || process_is_running("gdm-binary")) {
             /* GDM */
             gtk_widget_show (plug->priv->auth_switch_button);
-        } else if (g_getenv ("XDG_SEAT_PATH") != NULL) {
+        } else if (process_is_running ("lightdm")) {
             /* LightDM */
             gtk_widget_show (plug->priv->auth_switch_button);
         } else {
@@ -1655,9 +1744,6 @@ gs_lock_plug_finalize (GObject *object) {
 
     g_free (plug->priv->prefs);
     plug->priv->prefs = NULL;
-
-    g_free (plug->priv->channel);
-    plug->priv->channel = NULL;
 
     remove_response_idle (plug);
     remove_cancel_timeout (plug);

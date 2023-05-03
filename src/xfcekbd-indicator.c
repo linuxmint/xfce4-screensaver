@@ -61,7 +61,7 @@ G_DEFINE_TYPE (XfcekbdIndicator, xfcekbd_indicator, GTK_TYPE_NOTEBOOK)
 static void        xfcekbd_indicator_global_init                    (void);
 static void        xfcekbd_indicator_global_term                    (void);
 static GtkWidget * xfcekbd_indicator_prepare_drawing                (XfcekbdIndicator *gki,
-                                                                     int               group);
+                                                                     guint             group);
 static void        xfcekbd_indicator_set_current_page_for_group     (XfcekbdIndicator *gki,
                                                                      int               group);
 static void        xfcekbd_indicator_set_current_page               (XfcekbdIndicator *gki);
@@ -99,11 +99,10 @@ xfcekbd_indicator_cleanup (XfcekbdIndicator * gki) {
 
 void
 xfcekbd_indicator_fill (XfcekbdIndicator * gki) {
-    int          grp;
-    int          total_groups = xkl_engine_get_num_groups (globals.engine);
+    guint        total_groups = xkl_engine_get_num_groups (globals.engine);
     GtkNotebook *notebook = GTK_NOTEBOOK (gki);
 
-    for (grp = 0; grp < total_groups; grp++) {
+    for (guint grp = 0; grp < total_groups; grp++) {
         GtkWidget *page = xfcekbd_indicator_prepare_drawing (gki, grp);
 
         if (page == NULL)
@@ -143,8 +142,9 @@ xfcekbd_indicator_button_pressed (GtkWidget        *widget,
                                   GdkEventButton   *event,
                                   XfcekbdIndicator *gki) {
     if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
+        int group;
         gs_debug("Switching language");
-        int group = xkl_engine_get_next_group (globals.engine);
+        group = xkl_engine_get_next_group (globals.engine);
         xkl_engine_lock_group (globals.engine, group);
         globals.redraw_queued = TRUE;
         return TRUE;
@@ -203,7 +203,7 @@ xfcekbd_indicator_create_label_title (int          group,
 
 static GtkWidget *
 xfcekbd_indicator_prepare_drawing (XfcekbdIndicator *gki,
-                                   int               groupId) {
+                                   guint             groupId) {
     GtkWidget *ebox;
 
     char *lbl_title = NULL;
@@ -257,7 +257,7 @@ xfcekbd_indicator_update_tooltips (XfcekbdIndicator *gki) {
 
     if (state == NULL ||
             state->group < 0 ||
-            state->group >= g_strv_length ((gchar **)layouts)) {
+            state->group >= (gint) g_strv_length ((gchar **)layouts)) {
         return;
     }
 
@@ -310,18 +310,20 @@ xfcekbd_indicator_set_current_page_for_group (XfcekbdIndicator *gki,
 /* Should be called once for all widgets */
 static GdkFilterReturn
 xfcekbd_indicator_filter_x_evt (GdkXEvent *xev,
-                                GdkEvent  *event) {
+                                GdkEvent  *event,
+                                gpointer   data) {
     XEvent *xevent = (XEvent *) xev;
 
     xkl_engine_filter_events (globals.engine, xevent);
     switch (xevent->type) {
         case ReparentNotify:
             {
+                XReparentEvent *rne;
                 if (!globals.redraw_queued)
                     return GDK_FILTER_CONTINUE;
 
                 gs_debug("do repaint\n");
-                XReparentEvent *rne = (XReparentEvent *) xev;
+                rne = (XReparentEvent *) xev;
 
                 ForAllIndicators () {
                     GdkWindow *w =

@@ -1,3 +1,1176 @@
+commit f02b83d20cef607a137341c9d88c7cd3f87870da
+Author: Guido Falsi <mad@madpilot.net>
+Date:   Sat Mar 18 20:31:38 2023 +0100
+
+    Refactor spawn_make_environment_for_display()
+    
+    This function is duplicated in gs-window-x11.c and
+    xfce4-screensaver-preferences.c.
+    
+    Merge the two implementations in xfce-desktop-utils.c and use that
+    one.
+    
+    Also, instead of copying environ directly, use g_get_environ().
+
+ src/Makefile.am                     |  2 ++
+ src/gs-window-x11.c                 | 37 +---------------------------------
+ src/xfce-desktop-utils.c            | 40 +++++++++++++++++++++++++++++++++++++
+ src/xfce-desktop-utils.h            |  3 +++
+ src/xfce4-screensaver-preferences.c | 34 -------------------------------
+ 5 files changed, 46 insertions(+), 70 deletions(-)
+
+commit 69e422460193712dfa6d14b2466682b9db885bcf
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Mar 18 11:43:57 2023 +0100
+
+    Updates for release
+
+ NEWS         | 40 ++++++++++++++++++++++++++++++++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 42 insertions(+), 2 deletions(-)
+
+commit cf92c284c9d0a21576fca228f00c34fb03e3c922
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Sat Mar 18 11:26:02 2023 +0100
+
+    Add copyright notice to configure.ac
+    
+    This allows xfce-do-release to check for the copyright year, in
+    particular.
+
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit b2f1f01225c9f2eb0b71a400937700162d4b5e65
+Author: Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+Date:   Sat May 9 15:53:24 2020 +0200
+
+    Make missing GNOME Keyring PAM module warning quiet (Fixes #46)
+    
+    Currently, when missing the GNOME Keyring PAM module (an optional
+    dependency) a warning is logged at each screen unlock:
+    xfce4-screensaver-dialog[1234]: PAM adding faulty module: /lib64/security/pam_gnome_keyring.so
+    xfce4-screensaver-dialog[1234]: PAM unable to dlopen(/lib64/security/pam_gnome_keyring.so): /lib64/security/pam_gnome_keyring.so: cannot open shared object file: No such file or directory
+    
+    Let's hush this warning.
+
+ data/xfce4-screensaver.system-auth | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit e9e6e7ea238c9f1b3de2bd1df594e23ce73e400e
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Mar 17 18:11:05 2023 +0100
+
+    build: Fix --disable-locking (Fixes #83)
+
+ configure.ac        | 3 +++
+ src/gs-auth-pwent.c | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+commit 4c5074df84a1dad84f168ea9ed88efceceb1b2c5
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Mar 17 17:14:59 2023 +0100
+
+    Remove duplicated lines in README (Fixes #109)
+
+ README.md | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+commit 6bbb86918280a7ade946ca0501571214926ce762
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Mar 16 20:26:16 2023 +0100
+
+    savers: Fix critical warnings on exit
+    
+    In the current state of the code this only really has an impact on
+    floaters, where some cleanup takes place before leaving.
+
+ savers/floaters.c   | 2 +-
+ savers/popsquares.c | 2 +-
+ savers/slideshow.c  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 38c3952c4ee41ce3b734b22c4a8cbaff6f4118d9
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Thu Mar 16 20:15:06 2023 +0100
+
+    savers: Fix critical warnings from GSThemeWindow on "realize"
+    
+    A minimal fix that lets GTK create the widget window and then set the
+    remote window as its parent, rather than forcing its use as widget
+    window. There may be some unnecessary things to remove after this change
+    and some cleanup to do more generally, but the idea is to avoid side
+    effects as much as possible for now.
+
+ savers/gs-theme-window.c | 28 ++++++++++++++--------------
+ savers/gs-theme-window.h |  2 ++
+ 2 files changed, 16 insertions(+), 14 deletions(-)
+
+commit 178c3192c6c6996f8a30288e4172e86115904853
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Mar 15 18:25:44 2023 +0100
+
+    Do not redirect stderr for our own commands
+    
+    This hides warnings or other useful messages that should be accessible
+    without enabling debug mode. On the other hand some warnings should be
+    lowered to debug level, e.g. AccountsService may not be installed.
+
+ src/gs-job.c        | 39 +++++++++++++++++++++++----------------
+ src/gs-lock-plug.c  |  4 ++--
+ src/gs-window-x11.c | 27 ++++++++++++++++-----------
+ 3 files changed, 41 insertions(+), 29 deletions(-)
+
+commit 3776da09454617f66361b05f9cb34042162db1ec
+Author: Matias De lellis <mati86dl@gmail.com>
+Date:   Tue Oct 12 19:01:32 2021 -0300
+
+    Round the user picture on lock dialog.
+    
+    All user dialogs (Linux, Windows, Mac, Android, etc..), or any
+    representation of a user as an avatar in the web are round
+    images.
+    
+    Also, it shows an emblem icon to note that it is logged in as
+    in other dialogs.
+    
+    Both options can be made configurable by the user very easily,
+    but at least (IMHO of course), I think it respects the
+    preference of the majority of users.
+
+ src/gs-lock-plug.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 87 insertions(+), 4 deletions(-)
+
+commit c1ef19a7110ab1fcea980919fd45b069df46e7a0
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Tue Mar 14 21:01:26 2023 +0100
+
+    build: Do not warn if PAM prefix is correct
+
+ data/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 06b2cdcf78bb86bbe0a8b9a1469cafd72a36ee31
+Author: Cyrille Pontvieux <cyrille@enialis.net>
+Date:   Mon Mar 13 19:41:10 2023 +0000
+
+    Improve lightdm detection (Fixes #39)
+
+ src/gs-lock-plug.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+commit 7ab1161a4abefdeab60a2b31ad2c6f2405c4c25d
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Mar 13 18:06:38 2023 +0100
+
+    build: Fix -Wunused-value compiler warning
+
+ savers/gs-theme-engine.c | 4 ----
+ savers/gs-theme-window.c | 9 +--------
+ savers/gste-popsquares.c | 4 ----
+ 3 files changed, 1 insertion(+), 16 deletions(-)
+
+commit 9fb73f8ab5286761b990c45628ab692185f5fb04
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Mar 13 18:05:55 2023 +0100
+
+    build: Fix -Wdeclaration-after-statement compiler warning
+
+ src/xfce-bg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a9c6df37210578acd88a344f5d84f2acf64dd1c2
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Mar 13 18:04:01 2023 +0100
+
+    build: Fix -Wsign-compare compiler warning
+
+ src/gs-job.c            |  6 ++----
+ src/gs-listener-x11.c   |  8 ++++----
+ src/gs-visual-gl.c      |  3 +--
+ src/xfcekbd-indicator.c | 11 +++++------
+ 4 files changed, 12 insertions(+), 16 deletions(-)
+
+commit 216a915359402a7d491b70c497bc349f2c2bbe01
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Mon Mar 13 17:50:03 2023 +0100
+
+    build: Use XDT_FEATURE_DEBUG
+    
+    As in all or most other projects, enables same compiler warnings in
+    particular.
+
+ configure.ac | 53 +----------------------------------------------------
+ 1 file changed, 1 insertion(+), 52 deletions(-)
+
+commit d0ff3ef0c79328882c9afeff7e2a441a2407942e
+Author: Tcc100 <tobsucht94@gmx.de>
+Date:   Mon Mar 13 16:16:19 2023 +0000
+
+    Fix use-after-free crash in xfce4-screensaver-dialog
+
+ src/xfce-bg.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+commit a31ece385b1f5b2ebe3df8660e226d3a0840d8d5
+Author: Błażej Szczygieł <spaz16@wp.pl>
+Date:   Tue Mar 7 17:15:32 2023 +0100
+
+    Fix D-Bus sleep inhibit when screen locker is disabled
+    
+    Always remove sleep inhibit. Fixes few seconds delay when sleeping with
+    screen locker disabled.
+    
+    Amends: f2d07a3736f6767e69bb1e1ab3e3efbe068d199d
+
+ src/gs-listener-dbus.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit c475190655800e207ccc283ef6584a67e18da8f7
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Mar 8 20:53:07 2023 +0100
+
+    Complete previous commit
+    
+    Fixes: 7aeced1f6fb39fd8887fc441b4ff491ba5bfcf35
+
+ src/gs-prefs.c                      | 3 +++
+ src/xfce4-screensaver-preferences.c | 6 ++++++
+ 2 files changed, 9 insertions(+)
+
+commit 7aeced1f6fb39fd8887fc441b4ff491ba5bfcf35
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Mar 8 12:29:47 2023 +0100
+
+    Fix Xfconf memory management
+    
+    xfconf_channel_get() is transfer none contrary to what the doc says, and
+    each call of xfconf_init() must be followed by a call of
+    xfconf_shutdown().
+    
+    In particular, fixes an unref-critical when closing the prefs dialog.
+
+ src/gs-lock-plug.c                  |  3 ---
+ src/gs-prefs.c                      | 10 ----------
+ src/test-window.c                   |  1 +
+ src/xfce4-screensaver-dialog.c      |  1 +
+ src/xfce4-screensaver-preferences.c |  5 ++---
+ src/xfce4-screensaver.c             |  1 +
+ 6 files changed, 5 insertions(+), 16 deletions(-)
+
+commit 7ae8b3421344422d87069baff623bacd276cf70c
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Fri Feb 3 20:44:02 2023 +0100
+
+    build: Set GLib macros via XDT_CHECK_PACKAGE
+
+ configure.ac | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+commit 785a456fd843c574def813fdb616162812631ebf
+Author: Akbarkhon Variskhanov <akbarkhon.variskhanov@gmail.com>
+Date:   Mon Oct 3 19:19:43 2022 +0000
+
+    autogen.sh: Do not `mkdir m4`
+    
+    `xdt-autogen` takes care of this.
+
+ autogen.sh | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 8ed9ddc5355d67facf0facedd42832e22928f74b
+Author: Stergios Gemelas <sgemelas@protonmail.com>
+Date:   Fri Dec 30 19:40:46 2022 +0000
+
+    Fix crash when XDG_PICTURES_DIR is not set (Fixes #86)
+
+ src/xfce4-screensaver-configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9071a8668e9acccf38d0df190d39d7d47f9ed08e
+Author: Avinash Sonawane <rootkea@gmail.com>
+Date:   Fri Dec 30 19:11:34 2022 +0000
+
+    Fix build warning from Clang
+    
+    -lm is a linker flag.
+    
+    MR: !14
+
+ configure.ac       | 4 ++--
+ savers/Makefile.am | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+commit aea375ae29c5fa302c6070b53761c1f5b317b738
+Author: Avinash Sonawane <rootkea@gmail.com>
+Date:   Sat Oct 30 17:56:03 2021 +0530
+
+    --with-password-helper expects full pathname of password helper
+
+ configure.ac | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 41f279082c75cb981657fcbd5f503a959cc50207
+Author: Maciej S. Szmigiero <mail@maciej.szmigiero.name>
+Date:   Sun Nov 14 15:35:12 2021 +0100
+
+    Add missing zeroing of timeout_id in dialog_timed_out() timer handler
+    
+    dialog_timed_out() returns FALSE to remove its GSource but does not zero
+    the related timeout_id variable which can result in later removal of a
+    different event source that happen to reuse this id.
+
+ src/gs-lock-plug.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit a8f489c4096d33d95ab19b12315a47804a56ed69
+Author: Lance Arsenault <lance.arsenault@gmail.com>
+Date:   Tue May 31 10:39:09 2022 -0400
+
+    Fix wrong signal name for GtkSpinButton
+    
+    Fixes: #99
+    MR: !18
+
+ src/xfce4-screensaver-preferences.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit fbdf11f2658023ffb48fb7c101baf084ca869301
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Nov 30 18:26:51 2022 +0100
+
+    Remove ENABLE_NLS ifdefs and use xfce_textdomain()
+    
+    ENABLE_NLS is rarely used and will no longer be supported by
+    xfce4-dev-tools 4.18.
+
+ configure.ac                        | 6 ++++--
+ src/test-passwd.c                   | 8 +-------
+ src/test-window.c                   | 8 +-------
+ src/xfce4-screensaver-command.c     | 8 +-------
+ src/xfce4-screensaver-dialog.c      | 8 +-------
+ src/xfce4-screensaver-gl-helper.c   | 8 +-------
+ src/xfce4-screensaver-preferences.c | 8 +-------
+ src/xfce4-screensaver.c             | 8 +-------
+ 8 files changed, 11 insertions(+), 51 deletions(-)
+
+commit c5d965bb7169803bfb44be2e61a27d67a89003eb
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Tue Nov 29 20:41:01 2022 +0100
+
+    build: Fix intltool lock file problem during make distcheck
+    
+    See https://mail.xfce.org/pipermail/xfce4-dev/2022-May/032915.html
+
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 447b31948f75d133cd33e3ff3620e92d372e68ef
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Wed Jan 27 22:22:00 2021 +0100
+
+    Fix compilation warnings
+
+ data/icons/Makefile.am              |  2 +-
+ savers/floaters.c                   | 18 +++++++++---------
+ savers/gs-theme-engine.c            |  2 --
+ savers/gste-popsquares.c            |  2 --
+ savers/gste-slideshow.c             |  2 --
+ src/gs-auth-pam.c                   |  9 +++++----
+ src/gs-grab-x11.c                   |  2 --
+ src/gs-job.c                        |  2 --
+ src/gs-listener-dbus.c              |  2 --
+ src/gs-listener-x11.c               |  4 +---
+ src/gs-manager.c                    |  2 --
+ src/gs-monitor.c                    |  2 --
+ src/gs-prefs.c                      | 16 ++++++----------
+ src/gs-theme-manager.c              |  2 --
+ src/gs-window-x11.c                 |  4 +---
+ src/xfce-bg.c                       | 10 ++++------
+ src/xfce4-screensaver-dialog.c      |  6 +++---
+ src/xfce4-screensaver-preferences.c | 12 +++++-------
+ src/xfcekbd-indicator.c             |  9 ++++++---
+ 19 files changed, 41 insertions(+), 67 deletions(-)
+
+commit ff1bd991faa31e5f23bef9339f053c3ade60ad5a
+Author: Gaël Bonithon <gael@xfce.org>
+Date:   Tue Feb 2 18:00:21 2021 +0100
+
+    autoconf: Some updates
+    
+    * Remove AM_GLIB_GNU_GETTEXT
+    * AC_HELP_STRING -> AS_HELP_STRING
+    * AC_TRY_COMPILE -> AC_COMPILE_IFELSE
+    * Remove AC_STDC_HEADERS, AC_HEADER_STDC
+    * AC_OUTPUT -> AC_CONFIG_FILES + AC_OUTPUT
+
+ configure.ac | 72 +++++++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 40 insertions(+), 32 deletions(-)
+
+commit e351acc8a000ff80f8a11739c9ed7f48a1193712
+Author: Anonymous <noreply@xfce.org>
+Date:   Sun Oct 30 00:48:01 2022 +0200
+
+    I18n: Update translation pt (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://explore.transifex.com/xfce/).
+
+ po/pt.po | 44 ++++++++++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+commit 51bd8c6094fb141d478b6beabb634eee0256e5d5
+Author: Anonymous <noreply@xfce.org>
+Date:   Thu Oct 13 00:47:33 2022 +0200
+
+    I18n: Update translation pt (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://explore.transifex.com/xfce/).
+
+ po/pt.po | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 50d917b47098929e1835322e151bf8c8c2c48732
+Author: Anonymous <noreply@xfce.org>
+Date:   Fri May 27 00:50:49 2022 +0200
+
+    I18n: Update translation uk (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/uk.po | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+commit ed8303406ff36283f044940fae6b74e75abef44c
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Apr 5 00:52:40 2022 +0200
+
+    I18n: Update translation hu (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/hu.po | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 833caf0a967059586adafdeea1c84b7027838c2a
+Author: Jan Ziak <0xe2.0x9a.0x9b@gmail.com>
+Date:   Fri Mar 18 12:53:12 2022 +0100
+
+    I18n: Update translation sk (56%).
+    
+    86 translated messages, 65 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sk.po | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit d7d6a671db0756bad67e1394840177318b7b7f89
+Author: Andrii Protsun <minamotosoft@gmail.com>
+Date:   Sat Feb 12 12:54:14 2022 +0100
+
+    I18n: Update translation uk (94%).
+    
+    142 translated messages, 9 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/uk.po | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+commit 81ebed4c986abf43b65fe416e09ad63ba40c05c7
+Author: Omer I.S <omeritzicschwartz@gmail.com>
+Date:   Thu Nov 25 00:51:33 2021 +0100
+
+    I18n: Update translation he (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/he.po | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit d754d08a0178544b6f2e43e2885b317e3283b4ed
+Author: Anonymous <noreply@xfce.org>
+Date:   Sat Aug 28 12:51:19 2021 +0200
+
+    I18n: Update translation pl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/pl.po | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 32a1f64873710b6eb5fa56a768315df7a9076af4
+Author: Daniel Muñiz Fontoira <dani@damufo.eu>
+Date:   Fri Jul 23 16:07:18 2021 +0200
+
+    I18n: Update translation gl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/gl.po | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 542b7cb52e304c0834e924fea9ba8d978cf47230
+Author: Toni Estévez <toni.estevez@gmail.com>
+Date:   Fri Jul 23 16:07:18 2021 +0200
+
+    I18n: Update translation es (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/es.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1027ad6c299c0e236e2faf10f95e6af645bd0555
+Author: Nick Schermer <nick@xfce.org>
+Date:   Fri Jul 23 16:07:17 2021 +0200
+
+    I18n: Update translation ca (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ca.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1941996c871afd784bc30e37a3fc61bf1ae2516e
+Author: Toni Estévez <toni.estevez@gmail.com>
+Date:   Mon May 17 00:47:04 2021 +0200
+
+    I18n: Update translation es (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/es.po | 135 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 67 insertions(+), 68 deletions(-)
+
+commit c01aef3b7c3d01d1438e5c3e6a2e916cb23a9432
+Author: Toni Estévez <toni.estevez@gmail.com>
+Date:   Fri May 14 00:48:39 2021 +0200
+
+    I18n: Update translation es (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/es.po | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 6c6b6f447646162dbc3e967e2796b6d2ad2842b4
+Author: Nick Schermer <nick@xfce.org>
+Date:   Thu Apr 22 10:26:52 2021 +0200
+
+    I18n: Update translation sl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sl.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8ecc2552ea7737dcc6962bf2cc6e7ad47ec8853b
+Author: Nick Schermer <nick@xfce.org>
+Date:   Thu Apr 22 10:26:51 2021 +0200
+
+    I18n: Update translation nb (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/nb.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit ca9e790e480fcc85c3b39dc5df20d0be16f64a75
+Author: Vincenzo Reale <vinx.reale@gmail.com>
+Date:   Thu Apr 22 10:26:50 2021 +0200
+
+    I18n: Update translation it (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/it.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3a3fb803de2d7083a3b5c3c11f75b394edcc1db0
+Author: Daniel Muñiz Fontoira <dani@damufo.com>
+Date:   Fri Apr 2 12:49:17 2021 +0200
+
+    I18n: Update translation gl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/gl.po | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 3c7e3bc7edc5a6690f799c289e86e0a3dc1fe39a
+Author: Toni Estévez <toni.estevez@gmail.com>
+Date:   Thu Apr 1 00:47:15 2021 +0200
+
+    I18n: Update translation es (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/es.po | 51 +++++++++++++++++++++++++++------------------------
+ 1 file changed, 27 insertions(+), 24 deletions(-)
+
+commit 16b827a9315b2abe047a5bba1268a4aef6a3e895
+Author: Andrij Mizyk <andmizyk@gmail.com>
+Date:   Sun Feb 21 01:03:41 2021 +0100
+
+    I18n: Update translation uk (93%).
+    
+    141 translated messages, 10 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/uk.po | 94 +++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 49 insertions(+), 45 deletions(-)
+
+commit 9290ada6a9e73d80e5a6c25a548368be22a28edc
+Author: Andrij Mizyk <andmizyk@gmail.com>
+Date:   Fri Feb 19 00:47:06 2021 +0100
+
+    I18n: Add new translation uk (64%).
+    
+    97 translated messages, 54 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/uk.po | 680 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 680 insertions(+)
+
+commit 38b377d5c2b69e5d0dfa90c980f8f5695ae40398
+Author: Daniel Muñiz Fontoira <dani@damufo.com>
+Date:   Thu Feb 18 00:48:11 2021 +0100
+
+    I18n: Update translation gl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/gl.po | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit b5ee2bc9419655a83a67e74eaa1c3c56ec2e67f6
+Author: Anonymous <noreply@xfce.org>
+Date:   Sat Feb 6 12:49:21 2021 +0100
+
+    I18n: Add new translation kab (69%).
+    
+    105 translated messages, 46 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/kab.po | 666 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 666 insertions(+)
+
+commit d523a7f0b2a34b9117f39fe069c942c38dd91e2e
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:18 2021 +0100
+
+    I18n: Update translation zh_TW (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/zh_TW.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 63ff63a3924a17b0ff2669d47273124807071e69
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation zh_CN (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/zh_CN.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 2ea335ce9ff2ada7fa2b95014f152aefdd245cb5
+Author: Theppitak Karoonboonyanan <theppitak@gmail.com>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation th (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/th.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit a113c0df8a51f6971421912bb9a0760736a30d01
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation sv (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sv.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 7ff632a1bd5faa40d7b35366a274e971696a2dc0
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation sr (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sr.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 48c99801f257a69716726ef183683b4dddd9b31a
+Author: Besnik Bleta <besnik@programeshqip.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation sq (99%).
+    
+    150 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sq.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 982f490d740e022a9d10a566736227bc6938df1d
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation sl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sl.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 2c22dd1a3c3a388f68b7d1cde805864d5c5d4c36
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation sk (56%).
+    
+    85 translated messages, 66 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/sk.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 3c80c8fa8ae5b3a4e66332a41c634617adbc3a40
+Author: Sergey Alyoshin <alyoshin.s@gmail.com>
+Date:   Tue Jan 19 10:25:17 2021 +0100
+
+    I18n: Update translation ru (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ru.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 723bf96bce76282ecec8fabe125f5c868070a926
+Author: Andre Miranda <andre42m@gmail.com>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation pt_BR (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/pt_BR.po | 42 +++++++++++++++++++-----------------------
+ 1 file changed, 19 insertions(+), 23 deletions(-)
+
+commit d982968e62719b464731c69ddb24a94798955b97
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation pl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/pl.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit a31d704de5734b4ee33e9098da040038657a068f
+Author: Pjotr <pjotrvertaalt@gmail.com>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation nl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/nl.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit cbb996bb6381499bea81d47f5003aed1bd953117
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation nb (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/nb.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit f45f2f25c2e8e3efff60df3191f4fe6ab0eafead
+Author: abuyop <abuyop@gmail.com>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation ms (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ms.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 392264ac772529fe2b913eacc627d1340f4aefaf
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation lt (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/lt.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit ade1d072e87c5befb7dfbc4c4d06e6cc886551fa
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation ko (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ko.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit e68f8ae11960e6877571a85013e8cc0aee2fecb0
+Author: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation ja (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ja.po | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 836ad599267f49feef73cc467a4417c8dc469e73
+Author: Vincenzo Reale <vinx.reale@gmail.com>
+Date:   Tue Jan 19 10:25:16 2021 +0100
+
+    I18n: Update translation it (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/it.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 9f8975f0c5954de4a5c65402dcec2e8f17f45559
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation is (89%).
+    
+    135 translated messages, 16 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/is.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit d7585f55b61b42c3d0feab2b4992c5995658a021
+Author: Triyan W. Nugroho <triyan.wn@gmail.com>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation id (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/id.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 5e645b5de67cf641847c54b5aa8d079b6ef9758b
+Author: Arman Harutyunyan <arman.harut468@gmail.com>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation hye (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/hye.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 194075c0175d990427f986f28a4bfb7cc903c706
+Author: Hayk Andreasyan <hayk.andreasyan@realschool.am>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation hy_AM (98%).
+    
+    148 translated messages, 3 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/hy_AM.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit fea4bb05859c8c3a31730b470df22eb8bd66a7a5
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation hu (99%).
+    
+    150 translated messages, 1 untranslated message.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/hu.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 987adb0d386a32699b475b2dd538ba2f1db2843b
+Author: Omer I.S <omeritzicschwartz@gmail.com>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation he (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/he.po | 40 ++++++++++++++++++----------------------
+ 1 file changed, 18 insertions(+), 22 deletions(-)
+
+commit fc37f4ba06525e2c70b3918fafba397451537ef2
+Author: Daniel Muñiz Fontoira <dani@damufo.com>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation gl (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/gl.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit b388aeff0f7528949c80119c3dd17333411260ff
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation fr (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/fr.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 480257e3c87b827cea08628a30e28ddc1544a086
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Jan 19 10:25:15 2021 +0100
+
+    I18n: Update translation fi (92%).
+    
+    139 translated messages, 12 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/fi.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit ef484cb21bfc81b282b8c448fcc05487c2a314da
+Author: Anonymous <noreply@xfce.org>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation eu (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/eu.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 49ff2e80fac4c6a7c28e2d6ba9efb0344f5f5aae
+Author: Priit Jõerüüt <transifex@joeruut.com>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation et (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/et.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 8c8a3c218d1f6575e08a405a3cb4c14fb6e148e7
+Author: Ignacio Poggi <ignaciop.3@gmail.com>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation es (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/es.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit ef692b6553256ca3b79a2e6ebca4b781e856abb9
+Author: Michael Findlay <translate@cobber-linux.org>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation en_AU (89%).
+    
+    135 translated messages, 16 untranslated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/en_AU.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 55a0ce3d4cd9cf6c30443cf766c005b1b9b04cc8
+Author: Georg Eckert <eckert.georg@gmx.de>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation de (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/de.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit deadf90fcb8811d8040272e67bc4de43b159ffac
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation da (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/da.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit 6f571f8732c2077c12c30a5375f49ec2b7809ea3
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation ca (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/ca.po | 36 ++++++++++++++++--------------------
+ 1 file changed, 16 insertions(+), 20 deletions(-)
+
+commit e63f0f71441d0594b406c423af480c36e790f6db
+Author: Nick Schermer <nick@xfce.org>
+Date:   Tue Jan 19 10:25:14 2021 +0100
+
+    I18n: Update translation bg (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/bg.po | 38 +++++++++++++++++---------------------
+ 1 file changed, 17 insertions(+), 21 deletions(-)
+
+commit ce11de507767d99dabb930fa4dc7870bfd1170d8
+Author: Źmicier Turok <nashtlumach@gmail.com>
+Date:   Tue Jan 19 10:25:12 2021 +0100
+
+    I18n: Update translation be (100%).
+    
+    151 translated messages.
+    
+    Transifex (https://www.transifex.com/xfce/public/).
+
+ po/be.po | 40 ++++++++++++++++++----------------------
+ 1 file changed, 18 insertions(+), 22 deletions(-)
+
+commit 7fa7d10a58db66d7a5a53ddaf4e6f925529a6e24
+Author: Sean Davis <smd.seandavis@gmail.com>
+Date:   Sun Jan 3 05:47:40 2021 -0800
+
+    Updates for release
+
+ NEWS         | 18 +++++++++++++++++-
+ configure.ac |  2 +-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
 commit d0d67808111b16ed61e925b7e02e37769465d23a
 Author: Sean Davis <smd.seandavis@gmail.com>
 Date:   Sun Jan 3 05:07:38 2021 -0800

@@ -47,8 +47,6 @@
 #include "gs-debug.h"
 #include "gs-prefs.h"
 
-static void              gs_listener_class_init         (GSListenerClass *klass);
-static void              gs_listener_init               (GSListener      *listener);
 static void              gs_listener_finalize           (GObject         *object);
 
 static void              gs_listener_unregister_handler (DBusConnection  *connection,
@@ -1512,12 +1510,12 @@ listener_dbus_handle_system_message (DBusConnection *connection,
                 if (listener->priv->prefs->sleep_activation_enabled) {
                     gs_debug ("Logind requested session lock");
                     g_signal_emit (listener, signals[LOCK], 0);
-
-                    gs_debug ("Releasing sleep inhibitor");
-                    remove_sleep_inhibit (listener);
                 } else {
                     gs_debug ("Logind requested session lock, but lock on suspend is disabled");
                 }
+
+                gs_debug ("Releasing sleep inhibitor");
+                remove_sleep_inhibit (listener);
             } else {
                 gs_debug ("Reinstating logind sleep inhibitor lock");
                 add_sleep_inhibit (listener);

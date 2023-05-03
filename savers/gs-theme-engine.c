@@ -32,8 +32,6 @@
 #include "gs-theme-engine.h"
 #include "gs-theme-engine-marshal.h"
 
-static void     gs_theme_engine_class_init (GSThemeEngineClass *klass);
-static void     gs_theme_engine_init       (GSThemeEngine      *engine);
 static void     gs_theme_engine_finalize   (GObject            *object);
 
 struct GSThemeEnginePrivate {
@@ -74,8 +72,6 @@ gs_theme_engine_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec) {
-    GS_THEME_ENGINE (object);
-
     switch (prop_id) {
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -88,8 +84,6 @@ gs_theme_engine_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec) {
-    GS_THEME_ENGINE (object);
-
     switch (prop_id) {
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);

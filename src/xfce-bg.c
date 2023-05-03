@@ -620,7 +620,7 @@ xfce_bg_set_placement (XfceBG          *bg,
 }
 
 static inline gchar *
-get_wallpaper_cache_dir () {
+get_wallpaper_cache_dir (void) {
     return g_build_filename (g_get_user_cache_dir(), XFCE_BG_CACHE_DIR, NULL);
 }
 
@@ -1308,13 +1308,15 @@ blow_expensive_caches (gpointer data) {
     bg->blow_caches_id = 0;
 
     if (bg->file_cache) {
-        for (list = bg->file_cache; list != NULL; list = list->next) {
-            FileCacheEntry *ent = list->data;
+        for (list = bg->file_cache; list != NULL; ) {
+            /* Avoid use-after-free */
+            GList *item = list;
+            FileCacheEntry *ent = item->data;
+            list = list->next;
 
             if (ent->type == PIXBUF) {
                 file_cache_entry_delete (ent);
-                bg->file_cache = g_list_delete_link (bg->file_cache,
-                                     list);
+                bg->file_cache = g_list_delete_link (bg->file_cache, item);
             }
         }
     }
@@ -1877,13 +1879,14 @@ handle_text (GMarkupParseContext  *context,
              gpointer              user_data,
              GError              **err) {
     SlideShow *parser = user_data;
+    Slide     *slide;
     FileSize  *fs;
     gint       i;
 
     g_return_if_fail (parser != NULL);
     g_return_if_fail (parser->slides != NULL);
 
-    Slide *slide = parser->slides->tail ? parser->slides->tail->data : NULL;
+    slide = parser->slides->tail ? parser->slides->tail->data : NULL;
 
     if (stack_is (parser, "year", "starttime", "background", NULL)) {
         parser->start_tm.tm_year = parse_int (text) - 1900;
@@ -1991,10 +1994,7 @@ slideshow_unref (SlideShow *show) {
     }
 
     g_queue_free (show->slides);
-
-    g_list_foreach (show->stack->head, (GFunc) g_free, NULL);
-    g_queue_free (show->stack);
-
+    g_queue_free_full (show->stack, g_free);
     g_free (show);
 }
 
