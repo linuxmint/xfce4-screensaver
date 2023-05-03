@@ -1,3 +1,9 @@
+xfce4-screensaver (4.18.1-1) victoria; urgency=medium
+
+  * Update source to 4.18.1
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 03 May 2023 11:35:13 +0100
+
 xfce4-screensaver (4.16.0-1) unstable; urgency=medium
 
   * Team upload.
