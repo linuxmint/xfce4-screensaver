@@ -1,0 +1,93 @@
+xfce4-screensaver (4.16.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream version 4.16.0.
+  * d/control:
+    - Recommend gir1.2-xfconf-0 and gir1.2-libxfce4util-1.0, drop xfconf.
+  * d/copyright: Update years and my email address.
+  * Update Standards-Version to 4.5.1.
+
+ -- Unit 193 <unit193@debian.org>  Wed, 06 Jan 2021 02:26:02 -0500
+
+xfce4-screensaver (0.1.11-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Use correct machine-readable copyright file URI.
+
+  [ Unit 193 ]
+  * New upstream version 0.1.11.
+  * d/copyright: Update Source location for move to GitLab.
+
+ -- Unit 193 <unit193@debian.org>  Tue, 10 Nov 2020 00:34:50 -0500
+
+xfce4-screensaver (0.1.10-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+
+ -- Unit 193 <unit193@ubuntu.com>  Thu, 02 Apr 2020 20:04:11 -0400
+
+xfce4-screensaver (0.1.9-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * d/control:
+    - Update standards version to 4.5.0
+    - Set Rules-Requires-Root to no
+  * d/watch: use uscan special strings
+
+ -- Sean Davis <smd.seandavis@gmail.com>  Mon, 23 Mar 2020 19:36:55 -0400
+
+xfce4-screensaver (0.1.8-1) unstable; urgency=medium
+
+  [ Jonathan Carter ]
+  * New upstream release
+  * Remove self from uploaders
+
+  [ Unit 193 ]
+  * New upstream release.
+  * d/control:
+    - Recommend gir1.2-glib-2.0, gir1.2-gtk-3.0, python3, python3-gi and xfconf
+    - Update homepage field.
+    - Build-depend on libwnck-3-dev.
+  * d/copyright: Update a couple paths and fix license types.
+
+ -- Yves-Alexis Perez <corsac@debian.org>  Sun, 25 Aug 2019 17:51:46 +0200
+
+xfce4-screensaver (0.1.6-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update standards version to 4.4.0
+
+ -- Jonathan Carter <jcc@debian.org>  Mon, 08 Jul 2019 14:00:52 +0000
+
+xfce4-screensaver (0.1.4-1~exp2) experimental; urgency=medium
+
+  * Apply previous unreleased changes from Yves-Alexis Perez:
+    - Add Yves-Alexis Perez to uploaders
+    - Fix VCS fields in debian/control
+    - Add debian/gbp.conf
+
+ -- Jonathan Carter <jcc@debian.org>  Thu, 28 Mar 2019 20:41:04 +0200
+
+xfce4-screensaver (0.1.4-1~exp1) experimental; urgency=medium
+
+  * New upstream release (Closes: #921835)
+  * Upgrade to debhelper-compat (= 12)
+  * Update copyright years
+
+ -- Jonathan Carter <jcc@debian.org>  Mon, 25 Mar 2019 08:35:36 +0000
+
+xfce4-screensaver (0.1.3-2) unstable; urgency=medium
+
+  * Update libsystemd-dev dependency (Closes: #919151)
+
+ -- Jonathan Carter <jcc@debian.org>  Sun, 13 Jan 2019 16:52:19 +0200
+
+xfce4-screensaver (0.1.3-1) experimental; urgency=medium
+
+  * Initial release (Closes: #911115, #918585)
+
+ -- Jonathan Carter <jcc@debian.org>  Mon, 07 Jan 2019 15:36:20 +0200

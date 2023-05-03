@@ -1,0 +1,22 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/xfce4-screensaver-preferences.desktop.in
+data/xfce4-screensaver.directory.in
+savers/floaters.c
+savers/popsquares.c
+savers/slideshow.c
+savers/xfce-floaters.desktop.in.in
+savers/xfce-personal-slideshow.desktop.in.in
+savers/xfce-popsquares.desktop.in.in
+src/gs-auth-pam.c
+src/gs-listener-dbus.c
+src/gs-lock-plug.c
+src/xfce4-screensaver-command.c
+src/xfce4-screensaver-configure
+src/xfce4-screensaver-dialog.c
+[type: gettext/glade]src/xfce4-screensaver-dialog.ui
+src/xfce4-screensaver-preferences.c
+[type: gettext/glade]src/xfce4-screensaver-preferences.ui
+src/xfce4-screensaver.c
+src/xfce4-screensaver.desktop.in.in
+src/xfcekbd-indicator.c

@@ -1,0 +1,232 @@
+4.16.0
+======
+- xfce4-screensaver-configure: Use GIRepository of libxfce4util and xfconf (#11)
+- Change type of seconds to guint in add_lock_timer
+- Check dbus system_connection in add_sleep_inhibit
+- Cleanup GSourceFunc usage
+- Convert date_time_update to a timer function
+- Fix format specifiers in lock_timer
+- Fix issues connected to dbus (#66)
+- Fix pam_strerror usage
+- Pass constants to XSetScreenSaver
+- Plug memleak in get_x11_idle_info
+- Remove obsolete check for scrnsaver.h from configure.ac
+- Translation Updates:
+  Czech, Japanese, Portuguese, Turkish
+
+0.1.11
+======
+- Builds: Move from exo-csource to xdt-csource (Bugzilla #16717)
+- CI: Add basic GitLab pipeline
+- distcheck: Add missing gs-auth-pam.c
+- DPMS: Change sleep settings to seconds, default after 5 seconds (#27)
+- Fix: Catch gs_listener_dbus_init failures
+- Fix: remove unused flag --no-daemon
+- Icons: New icons and rDNS icon name, org.xfce.ScreenSaver
+- Internal: Change timers from milliseconds to seconds
+- README.md: Note setuid requirement after install with shadow/bsdauth (#9)
+- xfce4-screensaver.common-auth: replace @include with standard systax (#6)
+- Translation Updates:
+  Albanian, Armenian (Armenia), Basque, Bulgarian, Catalan, Chinese
+  (China), Chinese (Taiwan), Czech, Danish, Dutch, Eastern Armenian,
+  English (Australia), Estonian, French, German, Hebrew, Hungarian,
+  Icelandic, Italian, Japanese, Korean, Lithuanian, Malay, Norwegian
+  Bokmål, Polish, Portuguese, Portuguese (Brazil), Russian, Serbian,
+  Slovak, Slovenian, Spanish, Swedish, Thai, Turkish
+
+0.1.10 (beta)
+=============
+- Send DBus lock responses for xfce4-session support (bug #16522)
+- Translation Update: Galician
+
+0.1.9 (beta)
+============
+- Reimplement g_date_time_format_iso8601 to support GLib 2.50+
+- Replace deprecated GTimeVal usage
+- Rebuild windows on monitor reconfiguration
+- Draw overlays during window reconstruction to protect screen
+- Do not activate DPMS when screensaver is inactive (bug #16327)
+- Better handling of multi-monitor and lid-close events (bug #16102)
+- Update LINGUAS (bug #15949)
+- Fix decimal properties when running through atof
+- Return 1 on lock command failure (bug #15945)
+- Rename 'Pictures folder' to 'Slideshow' (bug #15589)
+- Raise NameError and TypeError (bug #15830)
+- Fix float parsing error (bug #16295)
+- Fix inhibitor proxying (bug #16356)
+- Fix inhibitor listing in xfce4-screensaver-command (bug #16355)
+- Add systemd sleep inhibitor (bug #15929)
+- Fix dbus inhibition (bug #16365)
+- dbus: Prevent overzealous activation (bug #16365)
+- Translation Updates:
+  Albanian, Belarusian, Czech, Finnish, Galician, Hebrew, Italian,
+  Japanese, Korean, Malay, Norwegian Bokmål, Polish, Portuguese
+  (Brazil), Serbian, Spanish, Swedish, Turkish
+
+0.1.8 (beta)
+============
+- Features:
+  - Optional screensaver inhibition for fullscreen apps
+  - Blank screensaver now supports DPMS (Xfce #15216)
+- Build Changes:
+  - Add dependency on libwnck >= 3.20
+- Translation Updates:
+  Basque, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Danish, Dutch, Finnish, French, Galician, German, Hungarian,
+  Italian, Lithuanian, Polish, Portuguese, Portuguese (Brazil),
+  Russian, Spanish
+
+0.1.7 (beta)
+============
+- Features:
+  - Added configuration tool for individual screensavers
+  - Added support for on-screen keyboards
+- Code Cleanup:
+  - Drop libXxf86 dependency, no longer implemented or available
+    (see https://github.com/mate-desktop/mate-screensaver/issues/199)
+  - Removed unneeded login window construction code
+  - Removed window shaking on failed login
+  - Removed unused session-idle signal
+  - Removed unused code from gs-manager/gs-window-x11
+  - Simplified lock screen code
+  - Simplified screensaver activation and locking code
+- General:
+  - Improved wallpaper drawing at 2x scale
+  - Migrated xfce4-screensaver-command to GDBus
+  - Fixed confusion between saver and lock timeouts
+- Translation Updates:
+  Armenian (Armenia), Belarusian, Bulgarian, Catalan, Chinese (China),
+  Chinese (Taiwan), Czech, Danish, Dutch, Finnish, French, Galician,
+  German, Hungarian, Italian, Lithuanian, Norwegian Bokmål, Polish,
+  Portuguese, Portuguese (Brazil), Russian, Spanish, Turkish
+
+0.1.6 (beta)
+============
+- Bug Fixes:
+  - Fixed flickering in the password dialog
+  - Fixed password dialog appearance, visual artifacts with various
+    themes are resolved
+  - Remove reference to pkg-config file (.pc) (Xfce #15597)
+- Code Cleanup:
+  - Cleaned up kdb-indicator logic
+  - Consolidated debug function calls
+  - Moved job theme processing out of gs-manager
+  - Removed drag-and-drop theme installation
+  - Removed placeholder widgets from the glade template
+  - Removed unused callbacks
+  - Simplified handling of user preferences
+- Translation Updates:
+  Armenian (Armenia), Hebrew, Hungarian, Malay, Portuguese,
+  Portuguese (Brazil), Russian
+
+0.1.5 (beta)
+============
+- Features:
+  - Added support for elogind (Xfce #15243)
+  - Added support for profile images from AccountsService (Xfce #15235)
+- General:
+  - Removed a lot of unused code (2,700+ lines)
+  - Simplified monitor-handling logic
+  - More consistent spacing in makefiles
+- Bug Fixes:
+  - Added categories to display in the Settings Manager (Xfce #15507)
+  - Added a fallback idle timer for when X11 screensaver doesn't notify
+  - Fixed warning during configure stage (Xfce #15552)
+  - Fixed Inhibitor lock (Xfce #15551)
+  - Hid screensaver themes from 'Open with' options (Xfce #15531)
+  - Made numerous cppcheck, cpplint, and Coverity Scan fixes
+    - Constant variables guarding dead code
+    - Dereferencing before/after null
+    - Unchecked return values
+    - Unused variables
+    - Memory leaks
+- Translation Updates:
+  Albanian, Basque, Belarusian, Bulgarian, Catalan, Chinese (China),
+  Chinese (Taiwan), Czech, Danish, Dutch, English (Australia),
+  French, German, Hebrew, Hungarian, Icelandic, Italian, Korean,
+  Lithuanian, Malay, Polish, Portuguese (Brazil), Serbian, Slovak,
+  Spanish, Swedish, Turkish
+
+0.1.4 (beta)
+============
+- Features:
+  - Added support for locking on suspend (Xfce #15001)
+- Bug Fixes:
+  - Fix password entry after stealing focus (Xfce #15042)
+- General:
+  - Faster screen locking when activated
+  - Faster renderering of the authentication prompt
+  - Improved support for monitor dis-/connection events
+  - Improved lock screen display on lid open events
+  - Improved idle activation
+  - Improved low-power state, screensavers are now suspended
+    when monitors are powered off via DPMS (Debian #921835)
+- Translation Updates:
+  Basque, Belarusian, Catalan, Czech, Danish, Galician, Lithuanian,
+  Malay, Portuguese, Russian, Serbian, Spanish, Swedish
+
+0.1.3 (beta)
+============
+- Features:
+  - All available settings are now availble in the Preferences dialog
+  - Locking on user inactivity is now based on X11 Screensaver signals
+  - Xfce Screensaver now respects the xdg-screensaver state
+  - Screensaver and lock screen functionality can now be toggled separately
+- General:
+  - Removed deprecated DBUS methods and signals from documentation
+- Preferences:
+  - Dropped unused preferences
+  - Renamed all Xfconf properties for improved clarity
+  - Embedded keyboard options have been disabled since they are currently
+    non-functional
+- Bug Fixes:
+  - Replaced Help link with a link to the Xfce Documentation (Xfce #14877)
+  - Added /usr/lib and /usr/libexec as trusted engine paths, enables
+    local installs with access to existing screensavers (Xfce #14883)
+  - Fixed screen blanking and locking on BSD (Xfce #14846)
+  - Fixed lock screen crash on laptop lid-close events (GTK #1466)
+  - Fixed daemon crash when scrolling through available themes
+  - Fixed minimum window size to allow resizing much smaller
+  - Renamed screensavers to prevent conflicts with MATE Screensaver
+  - Reduced flicker rate when multiple keyboard layouts are available
+- Build Improvements
+  - Silence warning: "ar: 'u' modifier ignored since 'D' is the default"
+  - Fix warning: "Target given more than once in the same rule"
+- Code Quality:
+  - Applied cpplint fixes and added cpplint configuration file
+  - Cleaned up unused variables, trailing spaces, and deprecated code
+  - Glade templates were cleaned up and organized for easier maintenance
+- Translation Updates:
+  Albanian, Basque, Chinese (China), Chinese (Taiwan), Danish, French, Galician,
+  Hebrew, Icelandic, Italian, Korean, Malay, Polish, Russian, Slovak, Turkish
+
+0.1.2 (alpha)
+=============
+- Bug Fixes:
+  - Resolve hidden libxfce4ui 4.13 requirement (Xfce #14821)
+  - Avoid hard-coded paths for systems that do not use /usr (Xfce #14822)
+
+0.1.1 (alpha)
+=============
+- General:
+  - Support color settings for Xfdesktop 4.12
+  - Fallback to the Xfdesktop default color background (dark blue)
+  - UI files are now compiled and included in the binaries
+  - Root warning is now an InfoBar to make it more visible
+  - Enabled embedding in the Xfce Settings Manager
+- Bug Fixes:
+  - Fix crash with no background placement, fix color settings (Xfce #14769)
+  - Redraw the screensaver on monitor configuration events (Xfce #14796)
+  - Automate detection of PAM configuration, add flag to override (Xfce #14779)
+  - Notify invalid lid-switch configuration and add Resolve button (Xfce #14782)
+  - Fix appearance with the Adwaita GTK theme
+  - Fix builds on OpenBSD, build status can now be tracked on the
+    Xfce Build Bot: https://buildbot.xfce.alteroot.org/job/xfce4-screensaver/
+- New Translations:
+  Albanian, Basque, Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Danish, Dutch, French, German, Italian, Lithuanian, Malay, Polish, Russian,
+  Slovak, Spanish, Swedish, Turkish
+
+0.1.0 (alpha)
+=============
+- Initial Xfce release.

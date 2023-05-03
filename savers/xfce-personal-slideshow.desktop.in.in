@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Slideshow
+_Comment=Display a slideshow from your Pictures folder
+Exec=@SAVERDIR@/slideshow
+TryExec=@SAVERDIR@/slideshow
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=XFCE;
+Hidden=true

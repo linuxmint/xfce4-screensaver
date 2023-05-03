@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Floating Xfce
+_Comment=Bubbles the Xfce logo around the screen
+Exec=/usr/local/libexec/xfce4-screensaver/floaters /usr/local/share/pixmaps/xfce-logo-white.svg
+TryExec=/usr/local/libexec/xfce4-screensaver/floaters
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=XFCE;
+Hidden=true

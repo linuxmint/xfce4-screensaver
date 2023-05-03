@@ -1,0 +1,694 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Davidmp <medipas@gmail.com>, 2019
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2019
+# Nick Schermer <nick@xfce.org>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-15 12:31+0100\n"
+"PO-Revision-Date: 2018-10-16 16:27+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2020\n"
+"Language-Team: Catalan (https://www.transifex.com/xfce/teams/16840/ca/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:1
+#: ../src/xfce4-screensaver-preferences.ui.h:21
+#: ../src/xfce4-screensaver.desktop.in.in.h:1
+msgid "Screensaver"
+msgstr "Estalvi de pantalla"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:2
+msgid "Set your screensaver preferences"
+msgstr "Establiu les preferències de l'estalvi de pantalla"
+
+#: ../data/xfce4-screensaver.directory.in.h:1
+msgid "Screensavers"
+msgstr "Estalvis de pantalla"
+
+#: ../data/xfce4-screensaver.directory.in.h:2
+msgid "Screensaver themes"
+msgstr "Temes d'estalvi de pantalla:"
+
+#: ../savers/floaters.c:89
+msgid "Show paths that images follow"
+msgstr "Mostra els camins que segueixen les imatges"
+
+#: ../savers/floaters.c:94
+msgid "Occasionally rotate images as they move"
+msgstr "Gira de vegades les imatges a mesura que es mouen"
+
+#: ../savers/floaters.c:99
+msgid "Print out frame rate and other statistics"
+msgstr "Imprimeix la velocitat dels fotogrames i altres estadístiques"
+
+#: ../savers/floaters.c:104
+msgid "The maximum number of images to keep on screen"
+msgstr "El nombre màxim d'imatges que voleu mantenir a la pantalla"
+
+#: ../savers/floaters.c:104
+msgid "MAX_IMAGES"
+msgstr "MAX_IMAGES"
+
+#: ../savers/floaters.c:109
+msgid "The initial size and position of window"
+msgstr "La mida i posició inicial de la finestra"
+
+#: ../savers/floaters.c:109
+msgid "WIDTHxHEIGHT+X+Y"
+msgstr "AMPLADAxALÇADA+X+Y"
+
+#: ../savers/floaters.c:114
+msgid "The source image to use"
+msgstr "La imatge d'origen a utilitzar"
+
+#. translators: the word "image" here
+#. * represents a command line argument
+#: ../savers/floaters.c:1122
+msgid "image - floats images around the screen"
+msgstr "imatge - flota imatges a la pantalla"
+
+#: ../savers/floaters.c:1126 ../savers/popsquares.c:49
+#, c-format
+msgid "%s. See --help for usage information.\n"
+msgstr "%s. Consulteu --help per a la informació d'ús.\n"
+
+#: ../savers/floaters.c:1133
+#, c-format
+msgid "Failed to initialize the windowing system."
+msgstr "No es pot inicialitzar el sistema de finestres."
+
+#: ../savers/floaters.c:1139
+#, c-format
+msgid "You must specify one image.  See --help for usage information.\n"
+msgstr ""
+"Heu d'especificar una imatge. Consulteu --help per a la informació d'ús.\n"
+
+#: ../savers/slideshow.c:53
+msgid "Location to get images from"
+msgstr "Ubicació des d'on s'obtenen les imatges"
+
+#: ../savers/slideshow.c:53
+msgid "PATH"
+msgstr "CAMÍ"
+
+#: ../savers/slideshow.c:57
+msgid "Color to use for images background"
+msgstr "Color a utilitzar per al fons de les imatges"
+
+#: ../savers/slideshow.c:57
+msgid "\"#rrggbb\""
+msgstr "\"#rrggbb\""
+
+#: ../savers/slideshow.c:61
+msgid "Do not randomize pictures from location"
+msgstr "No aleatoritzis les imatges de la ubicació"
+
+#: ../savers/slideshow.c:65
+msgid "Do not try to stretch images on screen"
+msgstr "No intentis estirar les imatges a la pantalla"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:1
+msgid "Floating Xfce"
+msgstr "Xfce flotant"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:2
+msgid "Bubbles the Xfce logo around the screen"
+msgstr "Bombolles amb el logotip de Xfce per tota la pantalla"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:1
+msgid "Slideshow"
+msgstr "Seqüència d'imatges"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:2
+msgid "Display a slideshow from your Pictures folder"
+msgstr "Mostra una presentació de diapositives de la carpeta d'imatges"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:1
+msgid "Pop art squares"
+msgstr "Quadrats pop-art"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:2
+msgid "A pop-art-ish grid of pulsing colors."
+msgstr "Una xarxa de colors de pulsació d'estil pop-art."
+
+#: ../src/gs-auth-pam.c:163
+msgid "Password:"
+msgstr "Contrasenya:"
+
+#: ../src/gs-auth-pam.c:375
+#, c-format
+msgid "Unable to establish service %s: %s\n"
+msgstr "No es pot establir el servei %s: %s\n"
+
+#: ../src/gs-auth-pam.c:401
+#, c-format
+msgid "Can't set PAM_TTY=%s"
+msgstr "No es pot establir PAM_TTY=%s"
+
+#: ../src/gs-auth-pam.c:432
+msgid "Incorrect password."
+msgstr "Contrasenya incorrecta."
+
+#: ../src/gs-auth-pam.c:434 ../src/xfce4-screensaver-dialog.c:311
+msgid "Authentication failed."
+msgstr "Ha fallat l'autenticació."
+
+#: ../src/gs-auth-pam.c:448
+msgid "Not permitted to gain access at this time."
+msgstr "No es permet accedir en aquest moment."
+
+#: ../src/gs-auth-pam.c:454
+msgid "No longer permitted to access the system."
+msgstr "Ja no es permet accedir al sistema."
+
+#: ../src/gs-auth-pam.c:667
+msgid "Username:"
+msgstr "Nom d'usuari:"
+
+#: ../src/gs-listener-dbus.c:1913
+msgid "failed to register with the message bus"
+msgstr "ha fallat el registre amb el bus de missatges"
+
+#: ../src/gs-listener-dbus.c:1923
+msgid "not connected to the message bus"
+msgstr "no connectat al bus de missatges"
+
+#: ../src/gs-listener-dbus.c:1932 ../src/gs-listener-dbus.c:1962
+msgid "screensaver already running in this session"
+msgstr "l'estalvi de pantalla ja s'està executant en aquesta sessió"
+
+#: ../src/gs-lock-plug.c:285
+msgctxt "Date"
+msgid "%A, %B %e   %H:%M"
+msgstr "%A, %e %B, %H:%M"
+
+#: ../src/gs-lock-plug.c:361
+msgid "Time has expired."
+msgstr "El temps ha vençut."
+
+#: ../src/xfce4-screensaver-command.c:56
+msgid "Causes the screensaver to exit gracefully"
+msgstr "Fa que l'estalvi de pantalla surti amb gràcia"
+
+#: ../src/xfce4-screensaver-command.c:60
+msgid "Query the state of the screensaver"
+msgstr "Consulta l'estat de l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-command.c:64
+msgid "Query the length of time the screensaver has been active"
+msgstr "Consulta el període de temps que l'estalvi de pantalla ha estat actiu"
+
+#: ../src/xfce4-screensaver-command.c:68
+msgid "Tells the running screensaver process to lock the screen immediately"
+msgstr ""
+"Indica al procés d'estalvi de pantalla en execució que bloquegi "
+"immediatament la pantalla"
+
+#: ../src/xfce4-screensaver-command.c:72
+msgid "If the screensaver is active then switch to another graphics demo"
+msgstr ""
+"Si l'estalvi de pantalla està actiu, aleshores canvia a una altra "
+"demostració de gràfics"
+
+#: ../src/xfce4-screensaver-command.c:76
+msgid "Turn the screensaver on (blank the screen)"
+msgstr "Activa l'estalvi de pantalla (enfosqueix la pantalla)"
+
+#: ../src/xfce4-screensaver-command.c:80
+msgid "If the screensaver is active then deactivate it (un-blank the screen)"
+msgstr ""
+"Si l'estalvi de pantalla està actiu, aleshores desactiva'l (restableix la "
+"pantalla)"
+
+#: ../src/xfce4-screensaver-command.c:84
+msgid "Poke the running screensaver to simulate user activity"
+msgstr "Burxa l'estalvi de pantalla actiu per simular activitat de l'usuari"
+
+#: ../src/xfce4-screensaver-command.c:88
+msgid ""
+"Inhibit the screensaver from activating.  Command blocks while inhibit is "
+"active."
+msgstr ""
+"Inhibeix l'activació de l'estalvi de pantalla. L'ordre bloqueja mentre la "
+"inhibició està activa."
+
+#: ../src/xfce4-screensaver-command.c:92
+msgid "The calling application that is inhibiting the screensaver"
+msgstr "L'aplicació que està demanant d'inhibir l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-command.c:96
+msgid "The reason for inhibiting the screensaver"
+msgstr "El motiu per inhibir l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-command.c:100 ../src/xfce4-screensaver-dialog.c:65
+#: ../src/xfce4-screensaver.c:58
+msgid "Version of this application"
+msgstr "Versió d'aquesta aplicació"
+
+#: ../src/xfce4-screensaver-command.c:206
+#, c-format
+msgid "The screensaver is %s\n"
+msgstr "L'estalvi de pantalla està %s\n"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "active"
+msgstr "actiu"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "inactive"
+msgstr "inactiu"
+
+#: ../src/xfce4-screensaver-command.c:217
+#, c-format
+msgid "The screensaver is not inhibited\n"
+msgstr "L'estalvi de pantalla no està inhibit\n"
+
+#: ../src/xfce4-screensaver-command.c:219
+#, c-format
+msgid "The screensaver is being inhibited by:\n"
+msgstr "Està inhibint l'estalvi de pantalla:\n"
+
+#: ../src/xfce4-screensaver-command.c:235
+#, c-format
+msgid "The screensaver has been active for %d seconds.\n"
+msgstr "L'estalvi de pantalla ha estat actiu durant %d segons.\n"
+
+#: ../src/xfce4-screensaver-configure:139
+#: ../src/xfce4-screensaver-preferences.c:710
+msgid "Blank screen"
+msgstr "Enfosqueix la pantalla"
+
+#: ../src/xfce4-screensaver-configure:140
+msgid ""
+"Powered by Display Power Management Signaling (DPMS),\n"
+"Xfce Screensaver can automatically suspend your displays\n"
+"to save power.\n"
+"\n"
+"Xfce Power Manager and other applications also manage\n"
+"DPMS settings. If your displays are powering off at different\n"
+"intervals, be sure to check for conflicting settings."
+msgstr ""
+"Potenciat per DPMS (Display Power Management Signaling),\n"
+"l'estalvi de pantalla de Xfce pot suspendre automàticament les\n"
+"pantalles per estalviar energia.\n"
+"\n"
+"El gestor d'energia de Xfce i altres aplicacions també gestionen\n"
+"els ajusts de DPMS Si les vostres pantalles s’encenen en intervals\n"
+"diferents, assegureu-vos de comprovar els ajusts conflictius."
+
+#: ../src/xfce4-screensaver-configure:176
+msgid "Part of Xfce Screensaver"
+msgstr "Part de l'estalvi de pantalla de Xfce"
+
+#: ../src/xfce4-screensaver-configure:403
+msgid "Restore Defaults"
+msgstr "Restaura els valors predeterminats"
+
+#: ../src/xfce4-screensaver-configure:416
+msgid "Preferences"
+msgstr "Preferències"
+
+#: ../src/xfce4-screensaver-configure:422
+msgid "About"
+msgstr "Quant a"
+
+#: ../src/xfce4-screensaver-configure:435
+msgid "Video"
+msgstr "Vídeo"
+
+#: ../src/xfce4-screensaver-configure:502
+#, c-format
+msgid "Unrecognized type: %s"
+msgstr "Tipus no reconegut: %s"
+
+#: ../src/xfce4-screensaver-configure:714
+msgid "Unable to configure screensaver"
+msgstr "No es pot configurar l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-configure:718
+msgid "Screensaver required."
+msgstr "Requereix l'estalvi de pantalla."
+
+#: ../src/xfce4-screensaver-configure:726
+#, c-format
+msgid "File not found: %s"
+msgstr "Fitxer no trobat: %s"
+
+#: ../src/xfce4-screensaver-configure:735
+#, c-format
+msgid "Unrecognized file type: %s"
+msgstr "Tipus de fitxer no reconegut: %s"
+
+#: ../src/xfce4-screensaver-configure:741
+#, c-format
+msgid "Failed to process file: %s"
+msgstr "Ha fallat el processament del fitxer: %s"
+
+#: ../src/xfce4-screensaver-configure:746
+#, c-format
+msgid "Screensaver %s is configurable."
+msgstr "L'estalvi de pantalla %s es pot configurar."
+
+#: ../src/xfce4-screensaver-configure:749
+#, c-format
+msgid "Screensaver %s is not configurable."
+msgstr "L'estalvi de pantalla %s no es pot configurar."
+
+#: ../src/xfce4-screensaver-configure:753
+#, c-format
+msgid "Screensaver %s has no configuration options."
+msgstr "L'estalvi de pantalla %s no té cap opció de configuració."
+
+#: ../src/xfce4-screensaver-dialog.c:63
+msgid "Show debugging output"
+msgstr "Mostra la sortida de depuració"
+
+#: ../src/xfce4-screensaver-dialog.c:67
+msgid "Show the logout button"
+msgstr "Mostra el botó de tancament de la sessió"
+
+#: ../src/xfce4-screensaver-dialog.c:69
+msgid "Command to invoke from the logout button"
+msgstr "Ordre que s'invocarà des del botó de tancament de la sessió"
+
+#: ../src/xfce4-screensaver-dialog.c:71
+msgid "Show the switch user button"
+msgstr "Mostra el botó de canvi d'usuari"
+
+#: ../src/xfce4-screensaver-dialog.c:73
+msgid "Message to show in the dialog"
+msgstr "Missatge que es mostrarà al diàleg"
+
+#: ../src/xfce4-screensaver-dialog.c:73 ../src/xfce4-screensaver-dialog.c:75
+msgid "MESSAGE"
+msgstr "MISSATGE"
+
+#: ../src/xfce4-screensaver-dialog.c:75
+msgid "Not used"
+msgstr "Sense utilitzar"
+
+#: ../src/xfce4-screensaver-dialog.c:77
+msgid "Monitor height"
+msgstr "Alçada del monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:79
+msgid "Monitor width"
+msgstr "Amplada del monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:81
+msgid "Monitor index"
+msgstr "Índex del monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:175 ../src/xfce4-screensaver-dialog.c:177
+#: ../src/xfce4-screensaver-dialog.c:178
+msgid "Please enter your username."
+msgstr "Introduïu el vostre nom d'usuari."
+
+#: ../src/xfce4-screensaver-dialog.c:184
+msgid "You are required to change your password immediately (password aged)"
+msgstr ""
+"Se us demana que canvieu immediatament la contrasenya (contrasenya antiga)"
+
+#: ../src/xfce4-screensaver-dialog.c:186
+msgid "You are required to change your password immediately (root enforced)"
+msgstr ""
+"Se us demana que canvieu immediatament la contrasenya (forçat per root)"
+
+#: ../src/xfce4-screensaver-dialog.c:188
+msgid "Your account has expired; please contact your system administrator"
+msgstr ""
+"El vostre compte ha vençut; poseu-vos en contacte amb l'administrador del "
+"vostre sistema"
+
+#: ../src/xfce4-screensaver-dialog.c:190
+msgid "No password supplied."
+msgstr "No s'ha proporcionat cap contrasenya."
+
+#: ../src/xfce4-screensaver-dialog.c:192
+msgid "Password unchanged."
+msgstr "Contrasenya sense canviar."
+
+#: ../src/xfce4-screensaver-dialog.c:194
+msgid "Can not get username."
+msgstr "No es pot obtenir el nom d'usuari."
+
+#: ../src/xfce4-screensaver-dialog.c:196
+msgid "Retype your new password."
+msgstr "Torneu a teclejar la vostra contrasenya nova."
+
+#: ../src/xfce4-screensaver-dialog.c:198
+msgid "Enter your new password."
+msgstr "Introduïu la vostra contrasenya nova."
+
+#: ../src/xfce4-screensaver-dialog.c:200
+msgid "Enter your current password:"
+msgstr "Introduïu la vostra contrasenya actual:"
+
+#: ../src/xfce4-screensaver-dialog.c:202
+msgid "Error while changing NIS password."
+msgstr "Error mentre es canviava la contrasenya NIS."
+
+#: ../src/xfce4-screensaver-dialog.c:204
+msgid "You must choose a longer password."
+msgstr "Heu de triar una contrasenya més llarga."
+
+#: ../src/xfce4-screensaver-dialog.c:206
+msgid "Password has been already used. Choose another."
+msgstr "La contrasenya ja ha estat utilitzada. Trieu-ne una altra."
+
+#: ../src/xfce4-screensaver-dialog.c:208
+msgid "You must wait longer to change your password."
+msgstr "Heu d'esperar més temps per canviar la contrasenya."
+
+#: ../src/xfce4-screensaver-dialog.c:210
+msgid "Sorry, passwords do not match."
+msgstr "Les contrasenyes no coincideixen."
+
+#: ../src/xfce4-screensaver-dialog.c:274
+msgid "Checking..."
+msgstr "S'està comprovant..."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:2
+#, no-c-format
+msgid "%U"
+msgstr "%U"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:3
+msgid "Enter your password"
+msgstr "Introduïu la vostra contrasenya"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:4
+msgid "You have the Caps Lock key on."
+msgstr "Teniu activada la tecla Bloq. Maj."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:5
+msgid "_Switch User"
+msgstr "Canvia d'u_suari"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:6
+msgid "_Log Out"
+msgstr "_Tanca la sessió"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:7
+msgid "_Cancel"
+msgstr "_Cancel·la"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:8
+msgid "_Unlock"
+msgstr "_Desbloqueja"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:10
+#, no-c-format
+msgid "<b>%h</b>"
+msgstr "<b>%h</b>"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:12
+#, no-c-format
+msgid "<b>%s</b>"
+msgstr "<b>%s</b>"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "Settings manager socket"
+msgstr "Sòcol del gestor d'ajusts"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "SOCKET ID"
+msgstr "ID SÒCOL"
+
+#: ../src/xfce4-screensaver-preferences.c:716
+msgid "Random"
+msgstr "Aleatori"
+
+#: ../src/xfce4-screensaver-preferences.c:1871
+msgid "Setting locked by administrator."
+msgstr "Ajust bloquejat per l'administrador"
+
+#: ../src/xfce4-screensaver-preferences.c:1912
+msgid "Could not load the main interface"
+msgstr "No s'ha pogut carregar la interfície principal"
+
+#: ../src/xfce4-screensaver-preferences.c:1914
+msgid "Please make sure that the screensaver is properly installed"
+msgstr ""
+"Assegureu-vos que l'estalvi de pantalla estigui instal·lat correctament"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:1
+msgid "Screensaver Preview"
+msgstr "Vista prèvia de l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:2
+msgid "<b>Screensaver preview</b>"
+msgstr "<b>Vista prèvia de l'estalvi de pantalla</b>"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:3
+msgid "Screensaver Preferences"
+msgstr "Preferències de l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:4
+msgid "Configure your screensaver and locker"
+msgstr "Configureu l'estalvi de pantalla i el bloquejador"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:5
+msgid "Power _Management"
+msgstr "Gestió de l'e_nergia"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:6
+msgid "Preview"
+msgstr "Vista prèvia"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:7
+msgid "Running as root"
+msgstr "Execució com a root"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:8
+msgid "The screen will not be locked for the root user."
+msgstr "La pantalla no es bloquejarà per a l'usuari root."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:9
+msgid "Resolve"
+msgstr "Soluciona"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:10
+msgid "Xfce Power Manager is not configured to handle laptop lid events"
+msgstr ""
+"El gestor d'energia de Xfce no està configurat per gestionar els "
+"esdeveniments de la tapa del portàtil"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:11
+msgid "Your computer may not be locked when you close the lid."
+msgstr "És possible que l'ordinador no es bloquegi quan tanqueu la tapa."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:12
+msgid "Enable Screensaver"
+msgstr "Habilita l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:13
+msgid "Theme"
+msgstr "Tema"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:14
+msgid "Configure screensaver"
+msgstr "Configura l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:15
+msgid "Configure..."
+msgstr "Configura..."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:16
+msgid "Change theme after:"
+msgstr "Canvia el tema després de:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:17
+msgid "minutes"
+msgstr "minuts"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:18
+msgid "Activate screensaver when computer is idle"
+msgstr "Activa l'estalvi de pantalla quan l'ordinador està inactiu"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:19
+msgid "Regard the computer as _idle after:"
+msgstr "Considera que l'ordinador està _inactiu després de:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:20
+msgid "Inhibit screensaver for fullscreen applications"
+msgstr ""
+"Inhibeix l'estalvi de pantalla per a les aplicacions a pantalla completa"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:22
+msgid "Enable Lock Screen"
+msgstr "Habilita el bloqueig de la pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:23
+msgid "Lock Screen with Screensaver"
+msgstr "Bloqueja la pantalla amb l'estalvi de pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:24
+msgid "Lock the screen after the screensaver is active for:"
+msgstr ""
+"Bloqueja la pantalla després que l'estalvi de pantalla hagi estat actiu "
+"durant:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:25
+msgid "On Screen Keyboard"
+msgstr "Teclat en pantalla"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:26
+msgid "On screen keyboard command:"
+msgstr "Ordre del teclat en pantalla:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:27
+msgid "Session Status Messages"
+msgstr "Missatges d'estat de la sessió"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:28
+msgid "Logout"
+msgstr "Tanca la sessió"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:29
+msgid "Logout command:"
+msgstr "Ordre per al tancament de la sessió:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:30
+msgid "Enable logout after:"
+msgstr "Habilita el tancament de la sessió després de:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:31
+msgid "User Switching"
+msgstr "Canvi d'usuari"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:32
+msgid "Lock Screen with System Sleep"
+msgstr "Bloqueja la pantalla amb el repòs del sistema"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:33
+msgid "Lock Screen"
+msgstr "Bloqueja la pantalla"
+
+#: ../src/xfce4-screensaver.c:59
+msgid "Don't become a daemon"
+msgstr "No es converteixi en dimoni"
+
+#: ../src/xfce4-screensaver.c:60
+msgid "Enable debugging code"
+msgstr "Habilita el codi de depuració"
+
+#: ../src/xfce4-screensaver.desktop.in.in.h:2
+msgid "Launch screensaver and locker program"
+msgstr "Llança l'estalvi de pantalla i el programa de bloqueig"
+
+#: ../src/xfcekbd-indicator.c:404
+msgid "XKB initialization error"
+msgstr "Error d'inicialització de XKB"

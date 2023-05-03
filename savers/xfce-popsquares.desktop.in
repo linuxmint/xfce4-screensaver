@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Pop art squares
+_Comment=A pop-art-ish grid of pulsing colors.
+Exec=/usr/local/libexec/xfce4-screensaver/popsquares
+TryExec=/usr/local/libexec/xfce4-screensaver/popsquares
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=XFCE;
+Hidden=true

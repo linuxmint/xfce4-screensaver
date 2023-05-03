@@ -1,0 +1,681 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Stefan Höök <stefan.hook@gmail.com>, 2018
+# Xfce Bot <transifex@xfce.org>, 2018
+# Påvel Nicklasson <pavel2@frimix.se>, 2019
+# Arve Eriksson <031299870@telia.com>, 2020
+# Nick Schermer <nick@xfce.org>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-15 12:31+0100\n"
+"PO-Revision-Date: 2018-10-16 16:27+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>, 2020\n"
+"Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:1
+#: ../src/xfce4-screensaver-preferences.ui.h:21
+#: ../src/xfce4-screensaver.desktop.in.in.h:1
+msgid "Screensaver"
+msgstr "Skärmsläckare"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:2
+msgid "Set your screensaver preferences"
+msgstr "Spara inställningar för skärmsläckare"
+
+#: ../data/xfce4-screensaver.directory.in.h:1
+msgid "Screensavers"
+msgstr "Skärmsläckare"
+
+#: ../data/xfce4-screensaver.directory.in.h:2
+msgid "Screensaver themes"
+msgstr "Tema för skärmsläckare"
+
+#: ../savers/floaters.c:89
+msgid "Show paths that images follow"
+msgstr "Visa slingor som bilder följer"
+
+#: ../savers/floaters.c:94
+msgid "Occasionally rotate images as they move"
+msgstr "Rotera ibland bilder då de rör sig"
+
+#: ../savers/floaters.c:99
+msgid "Print out frame rate and other statistics"
+msgstr "Skriv ut bildfrekvens och annan statistik"
+
+#: ../savers/floaters.c:104
+msgid "The maximum number of images to keep on screen"
+msgstr "Maximalt antal bilder att visa i bild"
+
+#: ../savers/floaters.c:104
+msgid "MAX_IMAGES"
+msgstr "MAX B_ILDER"
+
+#: ../savers/floaters.c:109
+msgid "The initial size and position of window"
+msgstr "Inledande fönsterstorlek och -position"
+
+#: ../savers/floaters.c:109
+msgid "WIDTHxHEIGHT+X+Y"
+msgstr "BREDDxHÖJD+X+Y"
+
+#: ../savers/floaters.c:114
+msgid "The source image to use"
+msgstr "Källbild som ska användas"
+
+#. translators: the word "image" here
+#. * represents a command line argument
+#: ../savers/floaters.c:1122
+msgid "image - floats images around the screen"
+msgstr "bild - bilder flyter runt på skärmen"
+
+#: ../savers/floaters.c:1126 ../savers/popsquares.c:49
+#, c-format
+msgid "%s. See --help for usage information.\n"
+msgstr "%s. Se --help för användningsinformation.\n"
+
+#: ../savers/floaters.c:1133
+#, c-format
+msgid "Failed to initialize the windowing system."
+msgstr "Kunde inte initiera fönstersystemet."
+
+#: ../savers/floaters.c:1139
+#, c-format
+msgid "You must specify one image.  See --help for usage information.\n"
+msgstr "Du måste specificera en bild. Se --help för användningsinformation.\n"
+
+#: ../savers/slideshow.c:53
+msgid "Location to get images from"
+msgstr "Plats för att få bilder från"
+
+#: ../savers/slideshow.c:53
+msgid "PATH"
+msgstr "SÖKVÄG"
+
+#: ../savers/slideshow.c:57
+msgid "Color to use for images background"
+msgstr "Färg att använda för bildbakgrund"
+
+#: ../savers/slideshow.c:57
+msgid "\"#rrggbb\""
+msgstr "\"#rrggbb\""
+
+#: ../savers/slideshow.c:61
+msgid "Do not randomize pictures from location"
+msgstr "Välj inte bilder slumpmässigt från platsen"
+
+#: ../savers/slideshow.c:65
+msgid "Do not try to stretch images on screen"
+msgstr "Försök inte att sträcka ut bilder på skärmen"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:1
+msgid "Floating Xfce"
+msgstr "Flytande Xfce"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:2
+msgid "Bubbles the Xfce logo around the screen"
+msgstr "Bubblar Xfce-loggan runt på skärmen"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:1
+msgid "Slideshow"
+msgstr "Bildspel"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:2
+msgid "Display a slideshow from your Pictures folder"
+msgstr "Visa ett bildspel från din bildmapp"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:1
+msgid "Pop art squares"
+msgstr "Popkonstrutor"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:2
+msgid "A pop-art-ish grid of pulsing colors."
+msgstr "Ett popkonst-igt rutnät av pulserande färger."
+
+#: ../src/gs-auth-pam.c:163
+msgid "Password:"
+msgstr "Lösenord:"
+
+#: ../src/gs-auth-pam.c:375
+#, c-format
+msgid "Unable to establish service %s: %s\n"
+msgstr "Det gick inte att upprätta tjänsten %s: %s\n"
+
+#: ../src/gs-auth-pam.c:401
+#, c-format
+msgid "Can't set PAM_TTY=%s"
+msgstr "Det gick inte att ställa in PAM_TTY=%s"
+
+#: ../src/gs-auth-pam.c:432
+msgid "Incorrect password."
+msgstr "Felaktigt lösenord."
+
+#: ../src/gs-auth-pam.c:434 ../src/xfce4-screensaver-dialog.c:311
+msgid "Authentication failed."
+msgstr "Autentisering misslyckades."
+
+#: ../src/gs-auth-pam.c:448
+msgid "Not permitted to gain access at this time."
+msgstr "Inte tillåten att få åtkomst vid denna tid."
+
+#: ../src/gs-auth-pam.c:454
+msgid "No longer permitted to access the system."
+msgstr "Inte längre tillåten att få åtkomst till systemet."
+
+#: ../src/gs-auth-pam.c:667
+msgid "Username:"
+msgstr "Användarnamn:"
+
+#: ../src/gs-listener-dbus.c:1913
+msgid "failed to register with the message bus"
+msgstr "misslyckades att registrera meddelande-bus"
+
+#: ../src/gs-listener-dbus.c:1923
+msgid "not connected to the message bus"
+msgstr "inte ansluten till meddelande-bus"
+
+#: ../src/gs-listener-dbus.c:1932 ../src/gs-listener-dbus.c:1962
+msgid "screensaver already running in this session"
+msgstr "skärmsläckare kör redan i denna session"
+
+#: ../src/gs-lock-plug.c:285
+msgctxt "Date"
+msgid "%A, %B %e   %H:%M"
+msgstr "%A, %B %e   %H:%M"
+
+#: ../src/gs-lock-plug.c:361
+msgid "Time has expired."
+msgstr "Tiden har gått ut."
+
+#: ../src/xfce4-screensaver-command.c:56
+msgid "Causes the screensaver to exit gracefully"
+msgstr "Gör så att skärmsläckaren upphör elegant"
+
+#: ../src/xfce4-screensaver-command.c:60
+msgid "Query the state of the screensaver"
+msgstr "Efterfrågar skärmsläckarens tillstånd"
+
+#: ../src/xfce4-screensaver-command.c:64
+msgid "Query the length of time the screensaver has been active"
+msgstr "Efterfrågar tiden som skärmsläckaren har varit aktiv"
+
+#: ../src/xfce4-screensaver-command.c:68
+msgid "Tells the running screensaver process to lock the screen immediately"
+msgstr "Uppmanar skärmsläckarprocessen som körs att omedelbart låsa skärmen"
+
+#: ../src/xfce4-screensaver-command.c:72
+msgid "If the screensaver is active then switch to another graphics demo"
+msgstr "Om skärmsläckaren är aktiv så växla till en annan grafikdemo"
+
+#: ../src/xfce4-screensaver-command.c:76
+msgid "Turn the screensaver on (blank the screen)"
+msgstr "Sätt igång skärmsläckaren (töm skärmen)"
+
+#: ../src/xfce4-screensaver-command.c:80
+msgid "If the screensaver is active then deactivate it (un-blank the screen)"
+msgstr "Om skärmsläckaren är aktiv så inaktivera den (töm inte skärmen)"
+
+#: ../src/xfce4-screensaver-command.c:84
+msgid "Poke the running screensaver to simulate user activity"
+msgstr "Få skärmsläckaren som kör att simulera användaraktivitet"
+
+#: ../src/xfce4-screensaver-command.c:88
+msgid ""
+"Inhibit the screensaver from activating.  Command blocks while inhibit is "
+"active."
+msgstr ""
+"Förhindra skärmsläckaren att aktiveras. Kommando blockerar medan hinder är "
+"aktivt."
+
+#: ../src/xfce4-screensaver-command.c:92
+msgid "The calling application that is inhibiting the screensaver"
+msgstr "Anropande program som spärrar skärmsläckaren"
+
+#: ../src/xfce4-screensaver-command.c:96
+msgid "The reason for inhibiting the screensaver"
+msgstr "Anledningen som spärrar skärmsläckaren"
+
+#: ../src/xfce4-screensaver-command.c:100 ../src/xfce4-screensaver-dialog.c:65
+#: ../src/xfce4-screensaver.c:58
+msgid "Version of this application"
+msgstr "Version av detta program"
+
+#: ../src/xfce4-screensaver-command.c:206
+#, c-format
+msgid "The screensaver is %s\n"
+msgstr "Skärmsläckaren är %s\n"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "active"
+msgstr "aktiv"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "inactive"
+msgstr "inaktiv"
+
+#: ../src/xfce4-screensaver-command.c:217
+#, c-format
+msgid "The screensaver is not inhibited\n"
+msgstr "Skärmsläckaren är inte spärrad\n"
+
+#: ../src/xfce4-screensaver-command.c:219
+#, c-format
+msgid "The screensaver is being inhibited by:\n"
+msgstr "Skärmsläckaren spärras av:\n"
+
+#: ../src/xfce4-screensaver-command.c:235
+#, c-format
+msgid "The screensaver has been active for %d seconds.\n"
+msgstr "Skärmsläckaren har varit aktiv i %d sekunder.\n"
+
+#: ../src/xfce4-screensaver-configure:139
+#: ../src/xfce4-screensaver-preferences.c:710
+msgid "Blank screen"
+msgstr "Töm skärm"
+
+#: ../src/xfce4-screensaver-configure:140
+msgid ""
+"Powered by Display Power Management Signaling (DPMS),\n"
+"Xfce Screensaver can automatically suspend your displays\n"
+"to save power.\n"
+"\n"
+"Xfce Power Manager and other applications also manage\n"
+"DPMS settings. If your displays are powering off at different\n"
+"intervals, be sure to check for conflicting settings."
+msgstr ""
+"Via Display Power Management Signaling (DPMS)\n"
+"kan Xfce Screensaver automatiskt stänga av dina skärmar\n"
+"för att spara energi.\n"
+"\n"
+"Xfce Power Manager och andra program hanterar också\n"
+"DPMS-inställningar. Om dina skärmar stängs av vid olika\n"
+"intervall, kontrollera om du har motstridiga inställningar."
+
+#: ../src/xfce4-screensaver-configure:176
+msgid "Part of Xfce Screensaver"
+msgstr "Del av Xfce Screensaver"
+
+#: ../src/xfce4-screensaver-configure:403
+msgid "Restore Defaults"
+msgstr "Återställ förval"
+
+#: ../src/xfce4-screensaver-configure:416
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: ../src/xfce4-screensaver-configure:422
+msgid "About"
+msgstr "Om"
+
+#: ../src/xfce4-screensaver-configure:435
+msgid "Video"
+msgstr "Video"
+
+#: ../src/xfce4-screensaver-configure:502
+#, c-format
+msgid "Unrecognized type: %s"
+msgstr "Okänd typ: %s"
+
+#: ../src/xfce4-screensaver-configure:714
+msgid "Unable to configure screensaver"
+msgstr "Kunde inte konfigurera skärmsläckare"
+
+#: ../src/xfce4-screensaver-configure:718
+msgid "Screensaver required."
+msgstr "Skärmsläckare krävs."
+
+#: ../src/xfce4-screensaver-configure:726
+#, c-format
+msgid "File not found: %s"
+msgstr "Filen hittades inte: %s"
+
+#: ../src/xfce4-screensaver-configure:735
+#, c-format
+msgid "Unrecognized file type: %s"
+msgstr "Okänd filtyp: %s"
+
+#: ../src/xfce4-screensaver-configure:741
+#, c-format
+msgid "Failed to process file: %s"
+msgstr "Kunde inte behandla fil: %s"
+
+#: ../src/xfce4-screensaver-configure:746
+#, c-format
+msgid "Screensaver %s is configurable."
+msgstr "Skärmsläckaren %s kan konfigureras."
+
+#: ../src/xfce4-screensaver-configure:749
+#, c-format
+msgid "Screensaver %s is not configurable."
+msgstr "Skärmsläckaren %s kan inte konfigureras."
+
+#: ../src/xfce4-screensaver-configure:753
+#, c-format
+msgid "Screensaver %s has no configuration options."
+msgstr "Skärmsläckaren %s har inga konfigurationsalternativ."
+
+#: ../src/xfce4-screensaver-dialog.c:63
+msgid "Show debugging output"
+msgstr "Visa felsökningsutmatning"
+
+#: ../src/xfce4-screensaver-dialog.c:67
+msgid "Show the logout button"
+msgstr "Visa utloggningsknappen"
+
+#: ../src/xfce4-screensaver-dialog.c:69
+msgid "Command to invoke from the logout button"
+msgstr "Kommando som ska anropas från utloggningsknappen"
+
+#: ../src/xfce4-screensaver-dialog.c:71
+msgid "Show the switch user button"
+msgstr "Visa knappen växla användare"
+
+#: ../src/xfce4-screensaver-dialog.c:73
+msgid "Message to show in the dialog"
+msgstr "Meddelande som ska visas i dialogrutan"
+
+#: ../src/xfce4-screensaver-dialog.c:73 ../src/xfce4-screensaver-dialog.c:75
+msgid "MESSAGE"
+msgstr "MEDDELANDE"
+
+#: ../src/xfce4-screensaver-dialog.c:75
+msgid "Not used"
+msgstr "Används inte"
+
+#: ../src/xfce4-screensaver-dialog.c:77
+msgid "Monitor height"
+msgstr "Skärmhöjd"
+
+#: ../src/xfce4-screensaver-dialog.c:79
+msgid "Monitor width"
+msgstr "Skärmbredd"
+
+#: ../src/xfce4-screensaver-dialog.c:81
+msgid "Monitor index"
+msgstr "Skärmindex"
+
+#: ../src/xfce4-screensaver-dialog.c:175 ../src/xfce4-screensaver-dialog.c:177
+#: ../src/xfce4-screensaver-dialog.c:178
+msgid "Please enter your username."
+msgstr "Vänligen ange ditt användarnamn."
+
+#: ../src/xfce4-screensaver-dialog.c:184
+msgid "You are required to change your password immediately (password aged)"
+msgstr "Du måste ändra ditt lösenord omedelbart (lösenordet för gammalt)"
+
+#: ../src/xfce4-screensaver-dialog.c:186
+msgid "You are required to change your password immediately (root enforced)"
+msgstr "Du måste ändra ditt lösenord omedelbart (root-tvång)"
+
+#: ../src/xfce4-screensaver-dialog.c:188
+msgid "Your account has expired; please contact your system administrator"
+msgstr "Ditt konto har gått ut; kontakta din systemadministratör"
+
+#: ../src/xfce4-screensaver-dialog.c:190
+msgid "No password supplied."
+msgstr "Inget lösenord tillhandahållet."
+
+#: ../src/xfce4-screensaver-dialog.c:192
+msgid "Password unchanged."
+msgstr "Lösenord oförändrat."
+
+#: ../src/xfce4-screensaver-dialog.c:194
+msgid "Can not get username."
+msgstr "Kan inte erhålla användarnamn."
+
+#: ../src/xfce4-screensaver-dialog.c:196
+msgid "Retype your new password."
+msgstr "Ange ditt nya lösenord igen."
+
+#: ../src/xfce4-screensaver-dialog.c:198
+msgid "Enter your new password."
+msgstr "Ange ditt nya lösenord."
+
+#: ../src/xfce4-screensaver-dialog.c:200
+msgid "Enter your current password:"
+msgstr "Ange ditt nuvarande lösenord:"
+
+#: ../src/xfce4-screensaver-dialog.c:202
+msgid "Error while changing NIS password."
+msgstr "Ett fel inträffade då NIS-lösenord byttes."
+
+#: ../src/xfce4-screensaver-dialog.c:204
+msgid "You must choose a longer password."
+msgstr "Du måste välja ett längre lösenord."
+
+#: ../src/xfce4-screensaver-dialog.c:206
+msgid "Password has been already used. Choose another."
+msgstr "Lösenord har redan använts. Välj ett annat."
+
+#: ../src/xfce4-screensaver-dialog.c:208
+msgid "You must wait longer to change your password."
+msgstr "Du måste vänta längre för att byta ditt lösenord."
+
+#: ../src/xfce4-screensaver-dialog.c:210
+msgid "Sorry, passwords do not match."
+msgstr "Tyvärr, lösenord matchar inte."
+
+#: ../src/xfce4-screensaver-dialog.c:274
+msgid "Checking..."
+msgstr "Kontrollerar..."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:2
+#, no-c-format
+msgid "%U"
+msgstr "%U"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:3
+msgid "Enter your password"
+msgstr "Ange ditt lösenord"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:4
+msgid "You have the Caps Lock key on."
+msgstr "Caps lock är aktiverad."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:5
+msgid "_Switch User"
+msgstr "_Växla användare"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:6
+msgid "_Log Out"
+msgstr "_Logga ut"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:7
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:8
+msgid "_Unlock"
+msgstr "Lås _upp"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:10
+#, no-c-format
+msgid "<b>%h</b>"
+msgstr "<b>%h</b>"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:12
+#, no-c-format
+msgid "<b>%s</b>"
+msgstr "<b>%s</b>"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "Settings manager socket"
+msgstr "Uttag för inställningshanterare"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "SOCKET ID"
+msgstr "SOCKET-ID"
+
+#: ../src/xfce4-screensaver-preferences.c:716
+msgid "Random"
+msgstr "Slumpmässigt"
+
+#: ../src/xfce4-screensaver-preferences.c:1871
+msgid "Setting locked by administrator."
+msgstr "Inställning låst av administratör."
+
+#: ../src/xfce4-screensaver-preferences.c:1912
+msgid "Could not load the main interface"
+msgstr "Det gick inte att läsa in huvudgränssnittet"
+
+#: ../src/xfce4-screensaver-preferences.c:1914
+msgid "Please make sure that the screensaver is properly installed"
+msgstr "Kontrollera att skärmsläckaren är korrekt installerad"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:1
+msgid "Screensaver Preview"
+msgstr "Förhandsvisa skärmsläckare"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:2
+msgid "<b>Screensaver preview</b>"
+msgstr "<b>Förhandsvisa skärmsläckare</b>"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:3
+msgid "Screensaver Preferences"
+msgstr "Inställningar för skärmsläckare"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:4
+msgid "Configure your screensaver and locker"
+msgstr "Konfigurera din skärmsläckare och skärmlås"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:5
+msgid "Power _Management"
+msgstr "Strö_msparhantering"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:6
+msgid "Preview"
+msgstr "Förhandsvisning"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:7
+msgid "Running as root"
+msgstr "Kör som root"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:8
+msgid "The screen will not be locked for the root user."
+msgstr "Skärmen kommer inte att vara låst för root-användaren."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:9
+msgid "Resolve"
+msgstr "Åtgärda"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:10
+msgid "Xfce Power Manager is not configured to handle laptop lid events"
+msgstr ""
+"Xfce Power Manager är inte konfigurerad för att hantera händelser från "
+"laptop-lock"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:11
+msgid "Your computer may not be locked when you close the lid."
+msgstr "Din dator kanske inte blir låst när du fäller ner locket."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:12
+msgid "Enable Screensaver"
+msgstr "Aktivera skärmsläckare"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:13
+msgid "Theme"
+msgstr "Tema"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:14
+msgid "Configure screensaver"
+msgstr "Konfigurera skärmsläckare"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:15
+msgid "Configure..."
+msgstr "Konfigurera.."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:16
+msgid "Change theme after:"
+msgstr "Ändra tema efter:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:17
+msgid "minutes"
+msgstr "minuter"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:18
+msgid "Activate screensaver when computer is idle"
+msgstr "Aktivera skärmsläckare när datorn är inaktiv"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:19
+msgid "Regard the computer as _idle after:"
+msgstr "Anse datorn som _inaktiv efter:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:20
+msgid "Inhibit screensaver for fullscreen applications"
+msgstr "Blockare skärmsläckare för program i helskärmsläge"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:22
+msgid "Enable Lock Screen"
+msgstr "Aktivera låsningsskärm"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:23
+msgid "Lock Screen with Screensaver"
+msgstr "Lås skärmen med skärmsläckaren"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:24
+msgid "Lock the screen after the screensaver is active for:"
+msgstr "Lås skärmen efter att skärmsläckaren varit aktiv i:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:25
+msgid "On Screen Keyboard"
+msgstr "On-screen tangentbord"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:26
+msgid "On screen keyboard command:"
+msgstr "On-screen tangentbordskommando:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:27
+msgid "Session Status Messages"
+msgstr "Sessionsstatusmeddelanden"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:28
+msgid "Logout"
+msgstr "Logga ut"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:29
+msgid "Logout command:"
+msgstr "Utloggningskommando:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:30
+msgid "Enable logout after:"
+msgstr "Aktivera utloggning efter:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:31
+msgid "User Switching"
+msgstr "Växla användare"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:32
+msgid "Lock Screen with System Sleep"
+msgstr "Lås skärm med Systemsömn"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:33
+msgid "Lock Screen"
+msgstr "Låsskärm"
+
+#: ../src/xfce4-screensaver.c:59
+msgid "Don't become a daemon"
+msgstr "Bli inte en demon"
+
+#: ../src/xfce4-screensaver.c:60
+msgid "Enable debugging code"
+msgstr "Aktivera felsökningskod"
+
+#: ../src/xfce4-screensaver.desktop.in.in.h:2
+msgid "Launch screensaver and locker program"
+msgstr "Starta skärmsläckare och låsprogram"
+
+#: ../src/xfcekbd-indicator.c:404
+msgid "XKB initialization error"
+msgstr "XKB igångsättningsfel"

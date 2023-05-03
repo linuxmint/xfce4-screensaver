@@ -1,0 +1,683 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# abuyop <abuyop@gmail.com>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-15 12:31+0100\n"
+"PO-Revision-Date: 2018-10-16 16:27+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>, 2020\n"
+"Language-Team: Malay (https://www.transifex.com/xfce/teams/16840/ms/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ms\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:1
+#: ../src/xfce4-screensaver-preferences.ui.h:21
+#: ../src/xfce4-screensaver.desktop.in.in.h:1
+msgid "Screensaver"
+msgstr "Penyelamat Skrin"
+
+#: ../data/xfce4-screensaver-preferences.desktop.in.h:2
+msgid "Set your screensaver preferences"
+msgstr "Tetapkan keutamaan penyelamat skrin anda"
+
+#: ../data/xfce4-screensaver.directory.in.h:1
+msgid "Screensavers"
+msgstr "Penyelamat Skrin"
+
+#: ../data/xfce4-screensaver.directory.in.h:2
+msgid "Screensaver themes"
+msgstr "Tema penyelamat skrin"
+
+#: ../savers/floaters.c:89
+msgid "Show paths that images follow"
+msgstr "Tunjuk laluan bagi imej berikut"
+
+#: ../savers/floaters.c:94
+msgid "Occasionally rotate images as they move"
+msgstr "Putar imej sekali-sekala pabila ia bergerak"
+
+#: ../savers/floaters.c:99
+msgid "Print out frame rate and other statistics"
+msgstr "Papar kadar bingkai dan lain-lain statistik"
+
+#: ../savers/floaters.c:104
+msgid "The maximum number of images to keep on screen"
+msgstr "Bilangan imej maksimum yang dipapar pada skrin"
+
+#: ../savers/floaters.c:104
+msgid "MAX_IMAGES"
+msgstr "MAX_IMAGES"
+
+#: ../savers/floaters.c:109
+msgid "The initial size and position of window"
+msgstr "Saiz dan kedudukan tetingkap awal"
+
+#: ../savers/floaters.c:109
+msgid "WIDTHxHEIGHT+X+Y"
+msgstr "WIDTHxHEIGHT+X+Y"
+
+#: ../savers/floaters.c:114
+msgid "The source image to use"
+msgstr "Imej sumber yang digunakan"
+
+#. translators: the word "image" here
+#. * represents a command line argument
+#: ../savers/floaters.c:1122
+msgid "image - floats images around the screen"
+msgstr "imej - imej terapung-apung di dalam skrin"
+
+#: ../savers/floaters.c:1126 ../savers/popsquares.c:49
+#, c-format
+msgid "%s. See --help for usage information.\n"
+msgstr "%s. Taip --help untuk maklumat penggunaan.\n"
+
+#: ../savers/floaters.c:1133
+#, c-format
+msgid "Failed to initialize the windowing system."
+msgstr "Gagal mengawalkan sistem tetingkap."
+
+#: ../savers/floaters.c:1139
+#, c-format
+msgid "You must specify one image.  See --help for usage information.\n"
+msgstr "Anda mesti nyatakan satu imej. Taip --help untuk maklumat penggunaan.\n"
+
+#: ../savers/slideshow.c:53
+msgid "Location to get images from"
+msgstr "Lokasi untuk mendapatkan imej"
+
+#: ../savers/slideshow.c:53
+msgid "PATH"
+msgstr "LALUAN"
+
+#: ../savers/slideshow.c:57
+msgid "Color to use for images background"
+msgstr "Warna yang digunakan untuk latar belakang imej"
+
+#: ../savers/slideshow.c:57
+msgid "\"#rrggbb\""
+msgstr "\"#rrggbb\""
+
+#: ../savers/slideshow.c:61
+msgid "Do not randomize pictures from location"
+msgstr "Jangan rawakkan gambar dalam lokasi"
+
+#: ../savers/slideshow.c:65
+msgid "Do not try to stretch images on screen"
+msgstr "Jangan cuba regangkan imej di atas skrin"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:1
+msgid "Floating Xfce"
+msgstr "Xfce terapung"
+
+#: ../savers/xfce-floaters.desktop.in.in.h:2
+msgid "Bubbles the Xfce logo around the screen"
+msgstr "Buih-buih berlogo Xfce terapung di dalam skrin"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:1
+msgid "Slideshow"
+msgstr "Paparan Slaid"
+
+#: ../savers/xfce-personal-slideshow.desktop.in.in.h:2
+msgid "Display a slideshow from your Pictures folder"
+msgstr "Papar papan slaid dalam folder Gambar anda"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:1
+msgid "Pop art squares"
+msgstr "Petak seni pop"
+
+#: ../savers/xfce-popsquares.desktop.in.in.h:2
+msgid "A pop-art-ish grid of pulsing colors."
+msgstr "Grid seni pop yang warna berdenyut-denyut bertukar."
+
+#: ../src/gs-auth-pam.c:163
+msgid "Password:"
+msgstr "Kata Laluan:"
+
+#: ../src/gs-auth-pam.c:375
+#, c-format
+msgid "Unable to establish service %s: %s\n"
+msgstr "Tidak dapat menubuhkan perkhidmatan %s: %s\n"
+
+#: ../src/gs-auth-pam.c:401
+#, c-format
+msgid "Can't set PAM_TTY=%s"
+msgstr "Tidak dapat tetapkan PAM_TTY=%s"
+
+#: ../src/gs-auth-pam.c:432
+msgid "Incorrect password."
+msgstr "Kata laluan salah."
+
+#: ../src/gs-auth-pam.c:434 ../src/xfce4-screensaver-dialog.c:311
+msgid "Authentication failed."
+msgstr "Pengesahihan gagal."
+
+#: ../src/gs-auth-pam.c:448
+msgid "Not permitted to gain access at this time."
+msgstr "Tidak dibenarkan mendapat capaian buat masa ini."
+
+#: ../src/gs-auth-pam.c:454
+msgid "No longer permitted to access the system."
+msgstr "Tidak lagi dibenarkan mencapai sistem."
+
+#: ../src/gs-auth-pam.c:667
+msgid "Username:"
+msgstr "Nama pengguna:"
+
+#: ../src/gs-listener-dbus.c:1913
+msgid "failed to register with the message bus"
+msgstr "gagal berdaftar dengan bas mesej"
+
+#: ../src/gs-listener-dbus.c:1923
+msgid "not connected to the message bus"
+msgstr "tidak bersambung dengan bas mesej"
+
+#: ../src/gs-listener-dbus.c:1932 ../src/gs-listener-dbus.c:1962
+msgid "screensaver already running in this session"
+msgstr "penyelamat skrin telah berjalan dalam sesi ini"
+
+#: ../src/gs-lock-plug.c:285
+msgctxt "Date"
+msgid "%A, %B %e   %H:%M"
+msgstr "%A, %B %e   %H:%M"
+
+#: ../src/gs-lock-plug.c:361
+msgid "Time has expired."
+msgstr "Tamat tempoh."
+
+#: ../src/xfce4-screensaver-command.c:56
+msgid "Causes the screensaver to exit gracefully"
+msgstr "Menyebabkan penyelamatan skrin keluar dengan cara elok"
+
+#: ../src/xfce4-screensaver-command.c:60
+msgid "Query the state of the screensaver"
+msgstr "Tanya keadaan penyelamat skrin"
+
+#: ../src/xfce4-screensaver-command.c:64
+msgid "Query the length of time the screensaver has been active"
+msgstr "Tanya tempoh masa aktif penyelamat skrin "
+
+#: ../src/xfce4-screensaver-command.c:68
+msgid "Tells the running screensaver process to lock the screen immediately"
+msgstr ""
+"Beritahu proses penyelamat skrin yang berjalan untuk mengunci skrin serta-"
+"merta"
+
+#: ../src/xfce4-screensaver-command.c:72
+msgid "If the screensaver is active then switch to another graphics demo"
+msgstr "Jika penyelamat skrin aktif maka beralih ke demo grafik yang lain"
+
+#: ../src/xfce4-screensaver-command.c:76
+msgid "Turn the screensaver on (blank the screen)"
+msgstr "Hidupkan penyelamat skrin (gelapkan skrin)"
+
+#: ../src/xfce4-screensaver-command.c:80
+msgid "If the screensaver is active then deactivate it (un-blank the screen)"
+msgstr ""
+"Jika penyelamat skrin aktif maka nyahaktifkannya (jangan gelapkan skrin)"
+
+#: ../src/xfce4-screensaver-command.c:84
+msgid "Poke the running screensaver to simulate user activity"
+msgstr ""
+"Ganggu penyelamat skrin yang berlangsung untuk simulasikan aktiviti pengguna"
+
+#: ../src/xfce4-screensaver-command.c:88
+msgid ""
+"Inhibit the screensaver from activating.  Command blocks while inhibit is "
+"active."
+msgstr ""
+"Rencatkan penyelamat skrin yang masih aktif. Perintah sekat jika rencat "
+"diaktifkan."
+
+#: ../src/xfce4-screensaver-command.c:92
+msgid "The calling application that is inhibiting the screensaver"
+msgstr "Aplikasi memanggil yang merencatkan penyelamat skrin"
+
+#: ../src/xfce4-screensaver-command.c:96
+msgid "The reason for inhibiting the screensaver"
+msgstr "Sebab merencatkan penyelamat skrin"
+
+#: ../src/xfce4-screensaver-command.c:100 ../src/xfce4-screensaver-dialog.c:65
+#: ../src/xfce4-screensaver.c:58
+msgid "Version of this application"
+msgstr "Versi aplikasi ini"
+
+#: ../src/xfce4-screensaver-command.c:206
+#, c-format
+msgid "The screensaver is %s\n"
+msgstr "Penyelamat skrin adalah %s\n"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "active"
+msgstr "aktif"
+
+#: ../src/xfce4-screensaver-command.c:206
+msgid "inactive"
+msgstr "Tidak aktif"
+
+#: ../src/xfce4-screensaver-command.c:217
+#, c-format
+msgid "The screensaver is not inhibited\n"
+msgstr "Penyelamat skrin tidak direncatkan\n"
+
+#: ../src/xfce4-screensaver-command.c:219
+#, c-format
+msgid "The screensaver is being inhibited by:\n"
+msgstr "Penyelamat skrin telah direncatkan oleh:\n"
+
+#: ../src/xfce4-screensaver-command.c:235
+#, c-format
+msgid "The screensaver has been active for %d seconds.\n"
+msgstr "Penyelamat skrin telah aktif dalam tempoh %d saat.\n"
+
+#: ../src/xfce4-screensaver-configure:139
+#: ../src/xfce4-screensaver-preferences.c:710
+msgid "Blank screen"
+msgstr "Skrin gelap"
+
+#: ../src/xfce4-screensaver-configure:140
+msgid ""
+"Powered by Display Power Management Signaling (DPMS),\n"
+"Xfce Screensaver can automatically suspend your displays\n"
+"to save power.\n"
+"\n"
+"Xfce Power Manager and other applications also manage\n"
+"DPMS settings. If your displays are powering off at different\n"
+"intervals, be sure to check for conflicting settings."
+msgstr ""
+"Diperkasa oleh Display Power Management Signaling (DPMS),\n"
+"Penyelamat skrin Xfce dapat menangguh paparan anda secara\n"
+"automatik untuk menjimatkan tenaga.\n"
+"\n"
+"Pengurus kuasa Xfce dan lain-lain aplikasi juga dapat mengurus\n"
+"tetapan DPMS. Jika paparan anda dimatikan pad sela berlainan,\n"
+"pastikan periksa tetapan yang berkonflik."
+
+#: ../src/xfce4-screensaver-configure:176
+msgid "Part of Xfce Screensaver"
+msgstr "Sebahagian daripada Penyelamat Skrin Xfce"
+
+#: ../src/xfce4-screensaver-configure:403
+msgid "Restore Defaults"
+msgstr "Pulih ke Lalai"
+
+#: ../src/xfce4-screensaver-configure:416
+msgid "Preferences"
+msgstr "Keutamaan"
+
+#: ../src/xfce4-screensaver-configure:422
+msgid "About"
+msgstr "Perihal"
+
+#: ../src/xfce4-screensaver-configure:435
+msgid "Video"
+msgstr "Video"
+
+#: ../src/xfce4-screensaver-configure:502
+#, c-format
+msgid "Unrecognized type: %s"
+msgstr "Jenis tidak dikenali: %s"
+
+#: ../src/xfce4-screensaver-configure:714
+msgid "Unable to configure screensaver"
+msgstr "Tidak boleh mengkonfigur penyelamat skrin"
+
+#: ../src/xfce4-screensaver-configure:718
+msgid "Screensaver required."
+msgstr "Penyelamat skrin diperlukan"
+
+#: ../src/xfce4-screensaver-configure:726
+#, c-format
+msgid "File not found: %s"
+msgstr "Fail tidak ditemui: %s"
+
+#: ../src/xfce4-screensaver-configure:735
+#, c-format
+msgid "Unrecognized file type: %s"
+msgstr "Jenis fail tidak dikenali: %s"
+
+#: ../src/xfce4-screensaver-configure:741
+#, c-format
+msgid "Failed to process file: %s"
+msgstr "Gagal memproses fail: %s"
+
+#: ../src/xfce4-screensaver-configure:746
+#, c-format
+msgid "Screensaver %s is configurable."
+msgstr "Penyelamat skrin %s boleh dikonfigur."
+
+#: ../src/xfce4-screensaver-configure:749
+#, c-format
+msgid "Screensaver %s is not configurable."
+msgstr "Penyelamat skrin %s tidak boleh dikonfigur."
+
+#: ../src/xfce4-screensaver-configure:753
+#, c-format
+msgid "Screensaver %s has no configuration options."
+msgstr "Penyelamat skrin %s tiada pilihan konfigurasi."
+
+#: ../src/xfce4-screensaver-dialog.c:63
+msgid "Show debugging output"
+msgstr "Tunjuk output penyahpepijatan"
+
+#: ../src/xfce4-screensaver-dialog.c:67
+msgid "Show the logout button"
+msgstr "Tunjuk butang daftar keluar"
+
+#: ../src/xfce4-screensaver-dialog.c:69
+msgid "Command to invoke from the logout button"
+msgstr "Perintah untuk diseru menerusi butang daftar keluar"
+
+#: ../src/xfce4-screensaver-dialog.c:71
+msgid "Show the switch user button"
+msgstr "Tunjuk butang tukar pengguna"
+
+#: ../src/xfce4-screensaver-dialog.c:73
+msgid "Message to show in the dialog"
+msgstr "Mesej yang ditunjukkan dalam dialog"
+
+#: ../src/xfce4-screensaver-dialog.c:73 ../src/xfce4-screensaver-dialog.c:75
+msgid "MESSAGE"
+msgstr "MESEJ"
+
+#: ../src/xfce4-screensaver-dialog.c:75
+msgid "Not used"
+msgstr "Tidak digunakan"
+
+#: ../src/xfce4-screensaver-dialog.c:77
+msgid "Monitor height"
+msgstr "Tinggi monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:79
+msgid "Monitor width"
+msgstr "Lebar monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:81
+msgid "Monitor index"
+msgstr "Indeks monitor"
+
+#: ../src/xfce4-screensaver-dialog.c:175 ../src/xfce4-screensaver-dialog.c:177
+#: ../src/xfce4-screensaver-dialog.c:178
+msgid "Please enter your username."
+msgstr "Sila masukkan nama pengguna anda."
+
+#: ../src/xfce4-screensaver-dialog.c:184
+msgid "You are required to change your password immediately (password aged)"
+msgstr ""
+"Anda perlu menukar kata laluan anda serta-merta (kata laluan sudah lama)"
+
+#: ../src/xfce4-screensaver-dialog.c:186
+msgid "You are required to change your password immediately (root enforced)"
+msgstr "Anda perlu menukar kata laluan anda serta-merta (dipaksa root)"
+
+#: ../src/xfce4-screensaver-dialog.c:188
+msgid "Your account has expired; please contact your system administrator"
+msgstr "Akaun anda telah luput; sila hubungi pentadbir sistem anda"
+
+#: ../src/xfce4-screensaver-dialog.c:190
+msgid "No password supplied."
+msgstr "Tiada kata laluan diperlukan."
+
+#: ../src/xfce4-screensaver-dialog.c:192
+msgid "Password unchanged."
+msgstr "Kata laluan tidak berubah."
+
+#: ../src/xfce4-screensaver-dialog.c:194
+msgid "Can not get username."
+msgstr "Tidak memperoleh nama pengguna."
+
+#: ../src/xfce4-screensaver-dialog.c:196
+msgid "Retype your new password."
+msgstr "Taip semula kata laluan anda."
+
+#: ../src/xfce4-screensaver-dialog.c:198
+msgid "Enter your new password."
+msgstr "Masukkan kata laluan baharu anda."
+
+#: ../src/xfce4-screensaver-dialog.c:200
+msgid "Enter your current password:"
+msgstr "Masukkan kata laluan semasa anda:"
+
+#: ../src/xfce4-screensaver-dialog.c:202
+msgid "Error while changing NIS password."
+msgstr "Ralat ketika mengubah kata laluan NIS."
+
+#: ../src/xfce4-screensaver-dialog.c:204
+msgid "You must choose a longer password."
+msgstr "Anda mesti pilih kata laluan yang lebih panjang."
+
+#: ../src/xfce4-screensaver-dialog.c:206
+msgid "Password has been already used. Choose another."
+msgstr "Kata laluan sudah digunakan. Pilih yang lain."
+
+#: ../src/xfce4-screensaver-dialog.c:208
+msgid "You must wait longer to change your password."
+msgstr "Anda mesti tunggu lebih lama untuk menukar kata laluan anda."
+
+#: ../src/xfce4-screensaver-dialog.c:210
+msgid "Sorry, passwords do not match."
+msgstr "Maaf, kata laluan tidak sepadan."
+
+#: ../src/xfce4-screensaver-dialog.c:274
+msgid "Checking..."
+msgstr "Memeriksa..."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:2
+#, no-c-format
+msgid "%U"
+msgstr "%U"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:3
+msgid "Enter your password"
+msgstr "Masukkan kata laluan anda"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:4
+msgid "You have the Caps Lock key on."
+msgstr "Kekunci Caps Lock anda hidup."
+
+#: ../src/xfce4-screensaver-dialog.ui.h:5
+msgid "_Switch User"
+msgstr "_Tukar Pengguna"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:6
+msgid "_Log Out"
+msgstr "Daftar _Keluar"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:7
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:8
+msgid "_Unlock"
+msgstr "_Buka"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:10
+#, no-c-format
+msgid "<b>%h</b>"
+msgstr "<b>%h</b>"
+
+#: ../src/xfce4-screensaver-dialog.ui.h:12
+#, no-c-format
+msgid "<b>%s</b>"
+msgstr "<b>%s</b>"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "Settings manager socket"
+msgstr "Tetapkan soket pengurus"
+
+#: ../src/xfce4-screensaver-preferences.c:80
+msgid "SOCKET ID"
+msgstr "ID SOKET"
+
+#: ../src/xfce4-screensaver-preferences.c:716
+msgid "Random"
+msgstr "Rawak"
+
+#: ../src/xfce4-screensaver-preferences.c:1871
+msgid "Setting locked by administrator."
+msgstr "Tetapan dikunci oleh pentadbir."
+
+#: ../src/xfce4-screensaver-preferences.c:1912
+msgid "Could not load the main interface"
+msgstr "Tidak dapat memuatkan antaramuka utama"
+
+#: ../src/xfce4-screensaver-preferences.c:1914
+msgid "Please make sure that the screensaver is properly installed"
+msgstr "Sila pastikan penyelamat skrin telah dipasang dengan baik"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:1
+msgid "Screensaver Preview"
+msgstr "Pratonton Penyelamat Skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:2
+msgid "<b>Screensaver preview</b>"
+msgstr "<b>Pratonton penyelamat skrin</b>"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:3
+msgid "Screensaver Preferences"
+msgstr "Keutamaan Penyelamat Skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:4
+msgid "Configure your screensaver and locker"
+msgstr "Konfigur penyelamat skrin dan pengunci anda"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:5
+msgid "Power _Management"
+msgstr "Pen_gurusan Kuasa"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:6
+msgid "Preview"
+msgstr "Pratonton"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:7
+msgid "Running as root"
+msgstr "Dijalankan sebagai root"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:8
+msgid "The screen will not be locked for the root user."
+msgstr "Skrin tidak akan dikunci bagi pengguna rott."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:9
+msgid "Resolve"
+msgstr "Selesaikan"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:10
+msgid "Xfce Power Manager is not configured to handle laptop lid events"
+msgstr ""
+"Pengurus Kuasa Xfce tidak dikonfigur untuk kendalikan peristiwa penutup "
+"komputer riba"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:11
+msgid "Your computer may not be locked when you close the lid."
+msgstr ""
+"Komputer anda tidak dikunci ketika anda menutup penutup komputer riba."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:12
+msgid "Enable Screensaver"
+msgstr "Benarkan Penyelamat Skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:13
+msgid "Theme"
+msgstr "Tema"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:14
+msgid "Configure screensaver"
+msgstr "Konfigur penyelamat skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:15
+msgid "Configure..."
+msgstr "Konfigur..."
+
+#: ../src/xfce4-screensaver-preferences.ui.h:16
+msgid "Change theme after:"
+msgstr "Ubah tema selepas:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:17
+msgid "minutes"
+msgstr "minit"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:18
+msgid "Activate screensaver when computer is idle"
+msgstr "Aktifkan penyelamat skrin ketika komputer melahu"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:19
+msgid "Regard the computer as _idle after:"
+msgstr "Anggap komputer telah me_lahu selepas:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:20
+msgid "Inhibit screensaver for fullscreen applications"
+msgstr "Sekat penyelamat skrin untuk aplikasi-aplikasi berskrin penuh"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:22
+msgid "Enable Lock Screen"
+msgstr "Benarkan Skrin Kunci"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:23
+msgid "Lock Screen with Screensaver"
+msgstr "Kunci Skrin dengan Penyelamat Skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:24
+msgid "Lock the screen after the screensaver is active for:"
+msgstr "Kunci skrin selepas penyelamat skrin aktif dalam tempoh:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:25
+msgid "On Screen Keyboard"
+msgstr "Papan Kekunci Atas Skrin"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:26
+msgid "On screen keyboard command:"
+msgstr "Perintah papan kekunci atas skrin:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:27
+msgid "Session Status Messages"
+msgstr "Mesej Status Sesi"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:28
+msgid "Logout"
+msgstr "Daftar Keluar"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:29
+msgid "Logout command:"
+msgstr "Perintah daftar keluar:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:30
+msgid "Enable logout after:"
+msgstr "Benarkan daftar keluar selepas:"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:31
+msgid "User Switching"
+msgstr "Pertukaran Pengguna"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:32
+msgid "Lock Screen with System Sleep"
+msgstr "Kunci Skrin bila Sistem Tidur"
+
+#: ../src/xfce4-screensaver-preferences.ui.h:33
+msgid "Lock Screen"
+msgstr "Skrin Kunci"
+
+#: ../src/xfce4-screensaver.c:59
+msgid "Don't become a daemon"
+msgstr "Jangan dijadikan sebagai daemon"
+
+#: ../src/xfce4-screensaver.c:60
+msgid "Enable debugging code"
+msgstr "Benarkan kod penyahpepijatan"
+
+#: ../src/xfce4-screensaver.desktop.in.in.h:2
+msgid "Launch screensaver and locker program"
+msgstr "Lancar penyelamat skrin dan program pengunci"
+
+#: ../src/xfcekbd-indicator.c:404
+msgid "XKB initialization error"
+msgstr "Ralat pengawalan XKB"

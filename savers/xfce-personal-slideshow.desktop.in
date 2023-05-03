@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Slideshow
+_Comment=Display a slideshow from your Pictures folder
+Exec=/usr/local/libexec/xfce4-screensaver/slideshow
+TryExec=/usr/local/libexec/xfce4-screensaver/slideshow
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Screensaver;
+OnlyShowIn=XFCE;
+Hidden=true
